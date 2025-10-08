@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/forms.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <section class="form-box login-section">
+            <h2>Iniciar Sesión</h2>
+            <a class="switch-link"href="registrarse.html">Registrarse!</a>
+            <form id="login-form">
+                <label for="login-email">Username / e-mail</label>
+                <input type="text" id="login-username" name="login-username" required>
+                
+                <label for="login-contrasenia">Contraseña</label>
+                <div class="input-password">
+                  <input type="password" id="login-contrasenia" name="login-contrasenia" required>
+                  <span class="cambiar-password">
+                    <img id="icono-ojo" src="iconos-imagenes/forms/ver.png" alt="Mostrar contraseña">
+                  </span>
+                </div>
+                
+                <button type="submit" class="login-btn">Iniciar sesión</button>
+                
+
+            </form>
+            <div class="otros-metodos">
+              <span>Otros métodos de inicio:</span>
+            </div>
+            <button class="social-btn facebook-btn">
+                    <img src="iconos-imagenes/redes/logoFacebook.png" alt="Facebook" class="icon">
+                    Iniciar sesión con Facebook
+                </button>
+
+                <button class="social-btn google-btn">
+                    <img src="iconos-imagenes/logoGoogle.png" alt="Google" class="icon">
+                     Iniciar sesión con Google
+                </button>
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Sobre la página</h3>
+            <p>Sobre nosotros</p>
+            <p>Equipo/Contacto</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Ayuda</h3>
+          <p>Preguntas frecuentes (FAQ)</p>
+          <p>Soporte / Ayuda</p>
+          <p>Términos y condiciones</p>
+          <p>Política de privacidad</p>
+          </div>
+
+        <div class="footer-section">
+          <h3>Navegación Rápida</h3>
+          <p>Inicio</p>
+          <p>Promociones / Ofertas</p>
+          <p>Juegos populares</p>
+          <p>Juegos nuevos</p>
+          <p>Favoritos</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Redes Sociales</h3>
+          <div class="social-icons">
+            <img src="iconos-imagenes/redes/logoFacebook.png" alt="Facebook" class="icon-footer">
+            <img src="iconos-imagenes/redes/instagram.png" alt="Instagram" class="icon-footer">
+            <img src="iconos-imagenes/redes/X.png" alt="Twitter" class="icon-footer">
+            <img src="iconos-imagenes/redes/youtube.png" alt="YouTube" class="icon-footer">
+          </div>
+        </div>
+      </div> 
+
+          <!-- ahora sí, el bloque inferior -->
+      <div class="footer-bottom">
+        <a href="index.html"><img src="/iconos-imagenes/logo/Stranger_Play-removebg-preview.png" alt="Stranger Play Logo" class="footer-logo"></a>
+          <span class="footer-copy">
+             &copy; 2025 Todos los derechos reservados - Stranger Play
+          </span>
+      </div>
+    </footer>
+  <script src="js/registrarse.js"></script>
+</body>
+</html>

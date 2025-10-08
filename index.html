@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Strike&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navBar">
+            <!-- IZQUIERDA -->
+             <div class="headerIzq">
+                 <button class="menuHamburguesa">
+                     <img src="/iconos-imagenes/menu.png" alt="menuHamburguesa" class="imgMenu">
+                     <div class="dropdown-menu">
+                        <img src="/iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                        <div class="menu-item">
+                          <a href="index.html">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/casa.png" alt="home">
+                          </a>
+                          <p>Inicio</p>
+                        </div>
+                        <a href="#populares">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/fuego.png" alt="populares">
+                            <p>Populares</p>
+                          </div>
+                        </a>  
+                        <a href="#top-puntados">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/trofeo.png" alt="">
+                            <p>Top Puntuados</p>
+                          </div>
+                        </a>  
+                        <a href="#nuevos">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/new.png" alt="">
+                            <p>Nuevos</p>
+                          </div>
+                        </a>  
+                        <a href="#arcade">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/juego-retro.png" alt="arcade">
+                            <p>Arcade</p>
+                          </div>
+                        </a>  
+                        <a href="#aventura">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/arboles.png" alt="arbol">
+                            <p>Aventura</p>
+                          </div>
+                        </a>  
+                        <a href="#accion">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/espadas.png" alt="espadas">
+                            <p>Acción</p>
+                          </div>
+                        </a>  
+                        <a href="#deportes">
+                          <div class="menu-item">
+                              <img src="/iconos-imagenes/iconos-hamburguesa/pelota.png" alt="deportes">
+                              <p>Deportes</p>
+                            </div>
+                          </a>  
+                        <a href="#puzzle">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/rompecabezas.png" alt="pieza">
+                            <p>Puzzle</p>
+                          </div>
+                        </a>  
+                        <a href="#estrategia">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/pieza-de-ajedrez.png" alt="caballo">
+                            <p>Estrategia</p>
+                          </div>
+                        </a>  
+                        <a href="#creativos">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/pintar.png" alt="tabla-pintura">
+                            <p>Creativos</p>
+                          </div>
+                        </a>  
+                        <a href="#habilidad">
+                          <div class="menu-item">
+                            <img src="/iconos-imagenes/iconos-hamburguesa/diana.png" alt="diana">
+                            <p>Habilidad</p>
+                          </div>
+                        </a>  
+                     </div>
+                 </button>
+                 <a href="index.html">
+                     <img src="/iconos-imagenes/logo/Stranger_Play-removebg-preview.png" alt="Logo" class="logo">
+                 </a>
+             </div>
+
+            <!-- CENTRO -->
+            <div class="headerCentro">
+                <input type="text" placeholder="Buscar">
+                <button type="submit">
+                    <img src="/iconos-imagenes/buscar.png" alt="Buscar">
+                </button>
+            </div>
+
+            <!-- DERECHA -->
+            <div class="headerDer">
+                <div class="notificaciones">
+                  <img src="/iconos-imagenes/notificacion.png" alt="notificaciones" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <div class="header-menues">
+                          <span>NOTIFICACIONES</span>
+                          <img src="/iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      </div>
+                      <div class="notificacion">
+                          <p>No tienes notificaciones nuevas.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="favoritos">
+                  <img src="/iconos-imagenes/corazon.png" alt="favoritos" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <div class="header-menues">
+                          <p>FAVORITOS</p>
+                          <img src="/iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      </div>
+                      <div class="juegos-favoritos">
+                          <p>No tienes favoritos aún.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="carrito">
+                  <img src="/iconos-imagenes/carrito-de-compras.png" alt="carrito" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <div class="header-menues">
+                          <span>MIS COMPRAS</span>
+                          <img src="/iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="/iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="/iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="/iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="/iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-total">
+                          <div class="carrito-total-textos">
+                              <p>Total a pagar:</p>
+                              <p>90,27 USD</p>
+                          </div>
+                          <button type="button" class="pagar" alt="pagar">Pagar</button>
+                      </div>
+                  </div>
+                </div>
+                <div class="perfil">
+                  <img src="/iconos-imagenes/usuario.png" alt="perfil" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <img src="/iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      <img src="/iconos-imagenes/usuario.png" alt="perfil">
+                      <p class="nombre-usuario">¡Hola, user91218!</p>
+                      <button type="button" class="perfil-opcion">Mi perfil</button>
+                      <button type="button" class="perfil-opcion">Editar perfil</button>
+                      <button type="button" class="perfil-opcion">Configuración</button>
+                      <button type="button" class="perfil-opcion">Soporte</button>
+                      <button type="button" class="perfil-opcion">Cerrar sesión</button>
+                  </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="slider">
+            <div class="slider-container">
+                <div class="slide active">
+                    <img src="/iconos-imagenes/slider/img1.png" alt="Juego 1">
+                </div>
+                <div class="slide">
+                    <img src="/iconos-imagenes/slider/img2.png" alt="Juego 2">
+                </div>
+                <div class="slide">
+                    <img src="/iconos-imagenes/slider/img3.png" alt="Juego 3">
+                </div>
+                <div class="slide">
+                    <img src="/iconos-imagenes/slider/img4.png" alt="Juego 4">
+                </div>
+                <div class="slide">
+                    <img src="/iconos-imagenes/slider/img5.png" alt="Juego 5">
+                </div>
+                <img src="/iconos-imagenes/flecha-izq.png" class="slider-arrow prev" alt="Anterior">
+                <img src="/iconos-imagenes/flecha-der.png" class="slider-arrow next" alt="Siguiente">
+                <div class="slider-label">NOVEDADES</div>
+            </div>
+        </div>
+        <div class="carruseles">
+
+          <!-- Ultimos jugados -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <h3>Ultimos jugados</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/slider/img1.png');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Peg Solitair x Stranger Things</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <a href="juego.html"><button class="card-play">Jugar</button></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fortnite.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Fortnite</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/minecraft.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Minecraft</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/geometry-dash.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Geometry Dash</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Populares -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+                <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/fuego.png" alt="icono-titulo-carrusel">
+                <h3 id="populares">Populares</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('iconos-imagenes/slider/img3.png');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Clash Royale</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fortnite.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Fortnite</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/minecraft.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Minecraft</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/roblox.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Roblox</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fc24.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">FC 25</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/geometry-dash.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Geometry Dash</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/COD.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Call Of Duty: Warzone</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Top Puntuados -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/trofeo.png" alt="icono-titulo-carrusel">
+              <h3 id="top-puntados">Top Puntuados</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/minecraft.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Minecraft</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fortnite.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Fortnite</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/lol.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">League Of Legends</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/counter.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Counter Strike: Global Offensive</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/among-us.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Among Us</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/slither-io.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Slither.io</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/apex.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Apex Legends</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/friday-night-funkin.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Friday Night Funkin'</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Nuevos -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/new.png" alt="icono-titulo-carrusel">
+              <h3 id="nuevos">Nuevos</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/grow-garden.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Grow A Garden</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/destiny-rising.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Destiny: Rising</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/supervive.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Supervive</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fragpunk.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">FragPunk</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/blue-protocol.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Blue Protocol: Star Resonance</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Arcade -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/juego-retro.png" alt="icono-titulo-carrusel">
+              <h3 id="arcade">Arcade</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/pacman.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Pac-Man</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/space-invaders.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Space Invaders</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/galaga.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Galaga</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/donkey-kong.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Donkey Kong</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/street-fighters.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Streets Fighters II</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/metal-slug.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Metal Slug</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/arkanoid.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Arkanoid</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/contra.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Contra</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Aventura -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/arbol.png" alt="icono-titulo-carrusel">
+              <h3 id="aventura">Aventura</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/zelda.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">The Legend of Zelda</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/the-secret-of-monkey-island.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">The Secret of Monkey Island</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/uncharted.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Uncharted 4</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/assassins-creed-origin.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Assasin's Creed Origins</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/genshin-impact.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Genshin Impact</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/a-plague-tale.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">A Plague Tale: Requiem</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/the-witcher.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">The Witcher 3: Wild Hunt</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/crash.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Crash Of The Titans</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Acción -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/espadas.png" alt="icono-titulo-carrusel">
+              <h3 id="accion">Acción</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/samurais-shadow.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Samurai shadow</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fortnite.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Fortnite</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/counter.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Counter Strike: Global Offensive</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/pubg.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">PUBG</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/assassins-creed.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Assassin's Creed</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/COD.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Call Of Duty: Warzone</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/resident-evil.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Resident Evil 3</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/rust.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Rust</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Deportes -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/pelota.png" alt="icono-titulo-carrusel">
+              <h3 id="deportes">Deportes</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/NHL.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">NHL 25</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/nba.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">NBA 2K25</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fc24.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">FC 25</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/topspin.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">TopSpin 2K25</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/golf-it.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Golf It</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/mlb-2k25.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">MLB 2K25</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/football-25.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Football 2025</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/nfl-25.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">NFL 2K25</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Puzzle -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/rompecabezas.png" alt="icono-titulo-carrusel">
+              <h3 id="puzzle">Puzzle</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/slider/img1.png');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Peg Solitair x Stranger Things</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <a href="juego.html"><button class="card-play">Jugar</button></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/civilization.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Civilization VI</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/starcraft2.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">StarCraft II</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/crusaders-kings.3.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Crusader Kings III</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/Total-War-Warhammer-3.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Total War: Warhammer 3</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/xcom2.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">XCOM 2</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/ajedrez.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Li Chess</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/damas.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Damas</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Estrategia -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/pieza-de-ajedrez.png" alt="icono-titulo-carrusel">
+              <h3 id="estrategia">Estrategia</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/tetris99.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Tetris 99</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/candy-crush.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Candy Crush</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/portal2.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Portal 2</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/Monument-Valley.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Monument Valley</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/inside.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Inside</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/baba-is-you.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Baba Is You</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/limbo.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Limbo</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/The-Talos-Principle.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">The Talos Principle</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Creativos -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/pintar.png" alt="icono-titulo-carrusel">
+              <h3 id="creativos">Creativos</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/minecraft.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Minecraft</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/roblox.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Roblox</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/littlebigplanet.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">LittleBigPlanet</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/sims4.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">The Sims 4</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/terraria.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Terraria</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/dreams.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Dreams</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/garrysmod.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Garry's Mod</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/spore.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Spore</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+
+          <!-- Habilidad -->
+          <div class="carrusel">
+            <div class="carrusel-header">
+              <img class="carrusel-titulo-img" src="/iconos-imagenes/iconos-carrusel/diana.png" alt="icono-titulo-carrusel">
+              <h3 id="habilidad">Habilidad</h3>
+            </div>
+            <div class="carrusel-container">
+              <img src="/iconos-imagenes/flecha-izq.png" class="carrusel-arrow prev" alt="Anterior">
+              <div class="carrusel-track">
+                <!-- 7 cards de juegos -->
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/geometry-dash.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Geometry Dash</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$9,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/domino.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Dominó</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$12,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/fruit-ninja.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Fruit Ninja</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$7,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/happy-wheels.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Happy Wheels</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$14,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/super-hexagon.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Super Hexagon</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$11,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/cut-the-roper.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Cut The Rope</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$8,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/flappy-bird.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Flappy Bird</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carrusel-card">
+                  <div class="card-img" style="background-image:url('/iconos-imagenes/juegos/slope.jpeg');"></div>
+                  <div class="card-info">
+                    <p class="card-nombre">Slope</p>
+                    <div class="card-info-bottom">
+                      <p class="card-precio">$10,99</p>
+                      <div class="card-botones">
+                        <button class="card-carrito"><img src="/iconos-imagenes/anadir-al-carrito.png" alt="Agregar al carrito"></button>
+                        <button class="card-play">Jugar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card "ver más" -->
+                <div class="carrusel-card ver-mas">
+                  <button>Ver más</button>
+                </div>
+              </div>
+              <img src="/iconos-imagenes/flecha-der.png" class="carrusel-arrow next" alt="Siguiente">
+            </div>
+          </div>
+        </div>
+    </main>
+    <!--<div id="loader">
+      <div class="loader-spinner"></div>
+      <div class="loader-percent" id="loader-percent">0%</div>
+    </div> -->
+    <footer class="main-footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Sobre la página</h3>
+            <p>Sobre nosotros</p>
+            <p>Equipo/Contacto</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Ayuda</h3>
+          <p>Preguntas frecuentes (FAQ)</p>
+          <p>Soporte / Ayuda</p>
+          <p>Términos y condiciones</p>
+          <p>Política de privacidad</p>
+          </div>
+
+        <div class="footer-section">
+          <h3>Navegación Rápida</h3>
+          <a href="index.html"><p>Inicio</p></a>
+          <p>Promociones / Ofertas</p>
+          <p>Juegos populares</p>
+          <p>Juegos nuevos</p>
+          <p>Favoritos</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Redes Sociales</h3>
+          <div class="social-icons">
+            <img src="/iconos-imagenes/redes/logoFacebook.png" alt="Facebook" class="icon-footer">
+            <img src="/iconos-imagenes/redes/instagram.png" alt="Instagram" class="icon-footer">
+            <img src="/iconos-imagenes/redes/X.png" alt="Twitter" class="icon-footer">
+            <img src="/iconos-imagenes/redes/youtube.png" alt="YouTube" class="icon-footer">
+          </div>
+        </div>
+      </div> 
+
+          <!-- ahora sí, el bloque inferior -->
+      <div class="footer-bottom">
+        <a href="index.html"><img src="/iconos-imagenes/logo/Stranger_Play-removebg-preview.png" alt="Stranger Play Logo" class="footer-logo"></a>
+          <span class="footer-copy">
+             &copy; 2025 Todos los derechos reservados - Stranger Play
+          </span>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/registrarse.js"></script>
+</body>
+</html>
