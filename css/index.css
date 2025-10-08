@@ -60,6 +60,7 @@ header {
   box-shadow: 0 4px 16px #99000A80;
   padding: 20px;
   pointer-events: auto;
+  z-index: 10000;
 }
 
 .show-menu .dropdown-menu {
