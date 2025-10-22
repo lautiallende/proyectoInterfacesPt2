@@ -1,3 +1,269 @@
+/* Contenedor general del juego*/
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 20px auto;
+  position: relative;
+}
+
+/* Canvas */
+#gameCanvas {
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  background-color: #000;
+}
+
+/* Controles del juego */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin: 16px auto;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+#timer, #level-info {
+  background-color: #222;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+}
+
+/* Botones */
+#startGameBtn, #nextLevelBtn, #retryBtn, .goToMenuBtn {
+  background-color: var(--secondary-color, #000CAD);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#startGameBtn:hover, #nextLevelBtn:hover, #retryBtn:hover, .goToMenuBtn:hover {
+  background-color: var(--secondary-hover, #000A90);
+  transform: scale(1.05);
+}
+
+/* Overlay inicial */
+.start-screen {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("../img/fondo-blocka.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.overlay-content {
+  background: rgba(0,0,0,0.6);
+  padding: 20px 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+}
+
+.overlay-content select {
+  margin: 12px 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Mensajes de victoria y derrota */
+.success-message, .defeat-message {
+  display: none;
+  margin-top: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.success-message {
+  color: limegreen;
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.defeat-message {
+  color: red;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.success-message button, .defeat-message button {
+  margin: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  background: var(--secondary-color, #000CAD);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.success-message button:hover, .defeat-message button:hover {
+  background: var(--secondary-hover, #000A90);
+}
+
+.success-message button, .defeat-message button {
+  margin: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  background: var(--secondary-color, #000CAD);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.success-message button:hover, .defeat-message button:hover {
+  background: var(--secondary-hover, #000A90);
+}
+
+/* Animación de victoria*/
+.win-effect {
+  animation: pulseWin 0.6s ease-in-out 2;
+}
+
+@keyframes pulseWin {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/*  Pie de juego (título e iconos)*/
+.pie-img {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.tit-pie-game {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.icons-pie-game {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.icon-pie-game-compartir,
+.icon-pie-game-fav,
+.icon-pie-game-controles,
+.icon-pie-game-fullScreen {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+/* Menús emergentes (compartir, controles) */
+.menu-compartir, .menu-controles {
+  display: none;
+  position: absolute;
+  background: #222;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  z-index: 30;
+}
+
+/*Descripción del juego */
+.descripcion-game {
+  margin: 40px auto;
+  display: flex;
+  gap: 20px;
+}
+
+.info-desc {
+  flex: 1;
+}
+
+.img-desc-ejem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.img-desc, .img-desc-2, .img-desc-3 {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Comentarios*/
+.comentarios-container {
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.comentario-insert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-coment {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+}
+.icon-user-coment,
+.icon-coment-piblic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comentarios-public {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.comentario-box {
+  background: #222;
+  padding: 12px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+/*  Loader  */
+.loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.loader-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+#loader-percent {
+  font-size: 18px;
+  color: #fff;
+}
 
 body {
     background-color: black;
@@ -294,7 +560,7 @@ body {
     height: auto;      
 }
 
-.icon-coment-piblic {
+.icon-coment-public {
     height: 50px;   
     width: 50px;     
     padding: 5px;   
@@ -302,7 +568,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.icon-coment-piblic:hover {
+.icon-coment-public:hover {
     transform: scale(1.20);
     cursor: pointer;
 }
@@ -584,96 +850,3 @@ body {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////// */ 
-
-.main-footer {
-  width: 100%;
-  min-height: 320px;        /*deja crecer el contenedor en caso de ser necesario*/
-  background-color: #1C1C1C;  /* color de fondo /*/
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;   /* distribuye arriba y abajo */
-  padding: 20px;
-  box-sizing: border-box;
-  font-family: Oswald, Arial, sans-serif;
-}
-
-.footer-container {
-  width: 90%;                 /* ancho interno */
-  max-width: 1200px;          /* límite para pantallas grandes */
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
-.footer-bottom {
-  width: 100%;
-  margin-top: 20px;
-  padding-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;                 /* espacio entre logo e ícono/texto */
-  font-size: 14px;
-  color: #aaa;
-}
-
-.footer-logo {
-  width: 111px;   /* ajustá según tu diseño */
-  height: auto;
-}
-
-.footer-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.footer-section-redes {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-section h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: white;
-}
-.footer-section-redes h3 {
-  margin-bottom: 16px;
-  padding-left: 100px;
-  text-align: center;
-}
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 6px;
-}
-
-.footer-section a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-section a:hover {
-  text-decoration: underline;
-}
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-.icon-footer {
-  margin: 5px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-}
-.icon-footer:hover{
-  transform: scale(1.07);
-}

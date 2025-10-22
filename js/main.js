@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => loader.style.display = 'none', 400);
             }, 400);
         }
-    }, 30); // 100 * 50ms = 5000ms = 5s
+    }, 30);
 
     const menuButtons = document.querySelectorAll('.notificaciones, .favoritos, .carrito, .menuHamburguesa');
 

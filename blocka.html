@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/juego.css">
+    <link rel="stylesheet" href="css/blocka.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -204,63 +204,102 @@
     </header>
 
     <div class="desc-ruta-game">
-        <a href="index.html"><button class="ruta-game">Home</button></a>
-        <a href="index.html#puzzle"><button class="ruta-game"> -> Puzzle</button></a>
-        <a><button class="ruta-game"> -> Peg solitair Stranger Things</button></a>
+        <a href="index.html"><button class="ruta-game">Home ></button></a><a href="index.html#categorias"> <button class="ruta-game">Categorias ></button></a> <a href="index.html#puzzle"><button class="ruta-game">Puzzle ></button></a> <button class="ruta-game">Peg Solitair</button>
     </div>
 
     <div class="game-img">
-        <img src="img/imagen-juego-of.png" alt="" class="imagen-juego">
-        <div class="pie-img">
-            <h2 class="tit-pie-game">Peg Solitair x Stranger Things</h2>
-            <div class="icons-pie-game">
-                <img src="img/Icon compartir.jpg.png" alt="" class="icon-pie-game-compartir">
-                <div class="menu-compartir" id="menu-compartir">
-                    <h3>Compartir</h3>
-                    <div class="apps">
-                        <div class="icon-menu-comp">
-                            <img src="img/discord-of.JPG.png" alt="Discord">
-                            <span>DISCORD</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/telegrama.png" alt="Telegram">   
-                            <span>TELEGRAM</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/gmail.png" alt="Email">
-                            <span>GMAIL</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/whatsapp.png" alt="WhatsApp">
-                            <span>WHATSAPP</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/X.png" alt="X">
-                            <span>X</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/mensajero.png" alt="Messenger">
-                            <span>MESSENGER</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/instagram.png" alt="Instagram">  
-                            <span>INSTAGRAM</span>
-                        </div>
-                    </div>
-                    <button id="cerrar">✕</button>
-                </div>
-                <img src="img/icon favoritos.jpg" alt="" class="icon-pie-game-fav">
-                <img src="img/icon controles.jpg" alt="" class="icon-pie-game-controles">
-                    <div class="menu-controles" id="menu-controles">
-                        <h3>Controles</h3>
-                        <div class="ejem-contr">
-                            <img src="iconos-imagenes/como-jugar.jpg" alt="como-jugar">
-                        </div>
-                        <button id="cerrar-controles">✕</button>
-                    </div>
-                <img src="img/icon fullScreen.jpg" alt="" class="icon-pie-game-fullScreen">
-            </div>
+      <div class="game-container">
+        <!-- Overlay inicial (menú) -->
+        <div id="startScreen" class="start-screen">
+          <div class="overlay-content">
+            <h1>¡Bienvenido a BLOCKA!</h1>
+            <p>Selecciona dificultad y haz clic en "Comenzar"</p>
+
+            <label for="pieceSelect">Piezas:</label>
+            <select id="pieceSelect">
+              <option value="2">2x2</option>
+              <option value="3">3x3</option>
+              <option value="4">4x4</option>
+            </select>
+
+            <button id="startGameBtn">Comenzar</button>
+          </div>
         </div>
+
+        <!-- Canvas del juego -->
+        <canvas id="gameCanvas" width="500" height="500"></canvas>
+
+        <!-- Controles informativos -->
+        <div class="controls">
+          <div id="timer">00:00</div>
+          <div id="level-info">Nivel - | Récord: --</div>
+        </div>
+
+        <!-- Mensaje de victoria -->
+        <div class="success-message" id="successMessage">
+          <span>¡Completado!</span>
+          <button id="nextLevelBtn">Siguiente</button>
+          <button class="goToMenuBtn">Menú</button>
+        </div>
+
+        <!-- Mensaje de derrota -->
+        <div class="defeat-message" id="defeatMessage">
+          <span>¡Se acabó el tiempo!</span>
+          <button id="retryBtn">Reintentar</button>
+          <button class="goToMenuBtn">Menú</button>
+        </div>
+      </div>
+    </div>
+      <div class="pie-img">
+          <h2 class="tit-pie-game">Peg Solitair x Stranger Things</h2>
+          <div class="icons-pie-game">
+              <img src="img/Icon compartir.jpg.png" alt="" class="icon-pie-game-compartir">
+              <div class="menu-compartir" id="menu-compartir">
+                  <h3>Compartir</h3>
+                  <div class="apps">
+                      <div class="icon-menu-comp">
+                          <img src="img/discord-of.JPG.png" alt="Discord">
+                          <span>DISCORD</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/telegrama.png" alt="Telegram">   
+                          <span>TELEGRAM</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/gmail.png" alt="Email">
+                          <span>GMAIL</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/whatsapp.png" alt="WhatsApp">
+                          <span>WHATSAPP</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/X.png" alt="X">
+                          <span>X</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/mensajero.png" alt="Messenger">
+                          <span>MESSENGER</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/instagram.png" alt="Instagram">  
+                          <span>INSTAGRAM</span>
+                      </div>
+                  </div>
+                  <button id="cerrar">✕</button>
+              </div>
+              <img src="img/icon favoritos.jpg" alt="" class="icon-pie-game-fav">
+              <img src="img/icon controles.jpg" alt="" class="icon-pie-game-controles">
+                  <div class="menu-controles" id="menu-controles">
+                      <h3>Controles</h3>
+                      <div class="ejem-contr">
+                          <img src="iconos-imagenes/como-jugar.jpg" alt="como-jugar">
+                      </div>
+                      <button id="cerrar-controles">✕</button>
+                  </div>
+              <img src="img/icon fullScreen.jpg" alt="" class="icon-pie-game-fullScreen">
+          </div>
+      </div>
     </div>
 
     <div class="descripcion-game">
@@ -420,5 +459,6 @@
     <script src="js/registrarse.js"></script>
     <script src="js/juego.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/blocka.js"></script>
 </body>
 </html>

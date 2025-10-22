@@ -60,5 +60,4 @@ document.addEventListener("DOMContentLoaded", () => {
       respuestasComent.style.display = "none";
     }
   });
-
 })
