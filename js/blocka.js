@@ -135,6 +135,7 @@ class PuzzleGame {
     this.startTime -= 5000;
 
     this.drawPieces();
+    this.checkWin();
   }
 
   // Animación de rotación de piezas
@@ -342,7 +343,13 @@ document.addEventListener('DOMContentLoaded', () => {
   nextLevelBtn.addEventListener('click', () => {
     const gridSize = parseInt(pieceSelect.value);
     level++;
-    if (level > 3) level = 1;
+    if (level > 3){
+      level = 1;
+      document.getElementById('successMessage').style.display = 'none';
+      ayuditaBtn.style.display = 'none';
+      showMenu();
+      return;
+    }
     game = new PuzzleGame(gridSize, level);
     game.loadImage(); // ← esto faltaba
     game.start();

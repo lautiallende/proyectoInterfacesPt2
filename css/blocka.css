@@ -128,23 +128,34 @@
 
 
 /* Mensajes de victoria y derrota */
-.success-message, .defeat-message {
+.success-message {
   display: none;
+  position: absolute;
+  top: 30%;
+  left: 20%;
   margin-top: 12px;
   font-weight: bold;
   text-align: center;
   padding: 12px;
   border-radius: 12px;
-}
-
-.success-message {
-  color: limegreen;
-  background: rgba(0, 255, 0, 0.1);
+  color: rgb(0, 77, 0);
+  background: rgba(0, 255, 0, 0.7);
+  z-index: 20;
 }
 
 .defeat-message {
-  color: red;
-  background: rgba(255, 0, 0, 0.1);
+  display: none;
+  position: absolute;
+  top: 31%;
+  left: 12%;
+  margin-top: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  z-index: 20;
+  color: rgb(114, 0, 0);
+  background: rgba(255, 0, 0, 0.85);
 }
 
 .success-message button, .defeat-message button {
