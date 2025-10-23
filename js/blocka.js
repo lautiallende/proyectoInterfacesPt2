@@ -23,6 +23,7 @@ class PuzzleGame {
     this.isPlaying = false;
     this.startTime = 0;
     this.timerInterval = null;
+    this.gapActivo = true;
 
     this.loadImage();
     this.initEvents();
@@ -32,7 +33,7 @@ class PuzzleGame {
     const totalImages = 6;
     const randomI = Math.floor(Math.random() * totalImages) + 1;
     this.image = new Image();
-    this.image.src = `./iconos-imagenes/blocka/blocka${randomI}.jpg`;
+    this.image.src = `iconos-imagenes/blocka/blocka${randomI}.jpg`;
     this.image.onload = () => {
       this.createPieces();
       this.drawPieces();
@@ -64,25 +65,29 @@ class PuzzleGame {
 
   drawPieces() {
     const pieceSize = this.canvas.width / this.gridSize;
+    const gap = this.gapActivo ? 4 : 0;
+
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
     this.pieces.forEach(p => {
       this.ctx.save();
       this.ctx.translate(
-        p.col * pieceSize  + pieceSize / 2,
+        p.col * pieceSize + pieceSize / 2,
         p.row * pieceSize + pieceSize / 2
       );
       this.ctx.rotate((p.rotation * Math.PI) / 180);
       this.ctx.filter = p.filter;
+
       this.ctx.drawImage(
         this.image,
         p.col * (this.image.width / this.gridSize),
         p.row * (this.image.height / this.gridSize),
         this.image.width / this.gridSize,
         this.image.height / this.gridSize,
-        -pieceSize / 2,
-        -pieceSize / 2,
-        pieceSize,
-        pieceSize
+        -pieceSize / 2 + gap / 2,
+        -pieceSize / 2 + gap / 2,
+        pieceSize - gap,
+        pieceSize - gap
       );
       this.ctx.restore();
     });
@@ -101,24 +106,61 @@ class PuzzleGame {
       const row = Math.floor(y / pieceSize);
       const piece = this.pieces.find(p => p.row === row && p.col === col);
       if (!piece) return;
-      if (e.button === 0) piece.rotation -= 90;
-      if (e.button === 2) piece.rotation += 90;
-      this.drawPieces();
-      this.checkWin();
+
+      // Animación de rotación suave
+      if (e.button === 0) this.animateRotation(piece, -90);
+      if (e.button === 2) this.animateRotation(piece, 90);
     });
   }
 
+  // Animación de rotación de piezas
+  animateRotation(piece, delta) {
+    if (piece.isAnimating) return;
+    piece.isAnimating = true;
+    const start = piece.rotation;
+    const end = start + delta;
+    const duration = 200;
+    const startTime = performance.now();
+
+    const animate = (time) => {
+      const progress = Math.min((time - startTime) / duration, 1);
+      piece.rotation = start + (end - start) * progress;
+      this.drawPieces();
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        piece.rotation = end % 360;
+        if (piece.rotation < 0) piece.rotation += 360;
+        this.drawPieces();
+        piece.isAnimating = false;
+
+        if (piece.rotation % 360 === 0) {
+        this.canvas.classList.add("correct");
+        setTimeout(() => this.canvas.classList.remove("correct"), 500);
+        }
+        this.checkWin();
+      }
+    };
+    requestAnimationFrame(animate);
+    
+  } 
+
   checkWin() {
     const allCorrect = this.pieces.every(p => p.rotation % 360 === 0);
-    const duration = 1 * 1000; // duración en milisegundos
+    const duration = 1500; // 1,5 segundos
     const end = Date.now() + duration;
-
     if (!allCorrect) return;
 
     clearInterval(this.timerInterval);
     this.isPlaying = false;
     this.pieces.forEach(p => (p.filter = 'none'));
+    this.gapActivo = false;
     this.drawPieces();
+
+    // Animación de victoria
+    const canvas = this.canvas;
+    canvas.classList.add('win-effect');
+    setTimeout(() => canvas.classList.remove('win-effect'), 1200);
 
     document.getElementById('successMessage').style.display = 'block';
     (function frame() {
@@ -146,7 +188,6 @@ class PuzzleGame {
       localStorage.setItem(recordKey, elapsed);
       alert(`¡Nuevo récord en nivel ${this.level}: ${elapsed} segundos!`);
     }
-
   }
 
   start() {
@@ -155,7 +196,7 @@ class PuzzleGame {
     document.getElementById('successMessage').style.display = 'none';
     document.getElementById('defeatMessage').style.display = 'none';
 
-    const recordKey = 'record_level_${this.level}';
+    const recordKey = `record_level_${this.level}`;
     const best = localStorage.getItem(recordKey);
     const info = document.getElementById('level-info');
     if (info) {
@@ -176,6 +217,11 @@ class PuzzleGame {
         clearInterval(this.timerInterval);
         this.isPlaying = false;
         document.getElementById('timer').textContent = "00:00";
+
+        // Animación de derrota
+        this.canvas.classList.add('lose-effect');
+        setTimeout(() => this.canvas.classList.remove('lose-effect'), 500);
+
         document.getElementById('defeatMessage').style.display = 'block';
         return;
       }
@@ -186,17 +232,19 @@ class PuzzleGame {
   }
 }
 
-// === Inicialización separada ===
+// === Inicialización de la interfaz ===
 document.addEventListener('DOMContentLoaded', () => {
+  // Referencias a elementos del DOM
   const startGameBtn = document.getElementById('startGameBtn');
   const pieceSelect = document.getElementById('pieceSelect');
   const nextLevelBtn = document.getElementById('nextLevelBtn');
-  const startScreen = document.getElementById('startScreen');
   const retryBtn = document.getElementById('retryBtn');
+  const startScreen = document.getElementById('startScreen');
 
   let game = null;
   let level = 1;
 
+  // Función para volver al menú inicial
   function showMenu() {
     startScreen.style.display = 'flex';
     const ctx = document.getElementById('gameCanvas').getContext('2d');
@@ -205,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('level-info').textContent = "Nivel - | Récord: --";
   }
 
-  // Botón Comenzar (overlay inicial)
+  // Botón "Comenzar" (overlay inicial)
   startGameBtn.addEventListener('click', () => {
     const gridSize = parseInt(pieceSelect.value);
     level = 1;
@@ -214,17 +262,17 @@ document.addEventListener('DOMContentLoaded', () => {
     startScreen.style.display = 'none';
   });
 
-  // Botón Siguiente nivel
+  // Botón "Siguiente nivel"
   nextLevelBtn.addEventListener('click', () => {
     const gridSize = parseInt(pieceSelect.value);
     level++;
-    if (level > 3) level = 1;
+    if (level > 3) level = 1; // vuelve a nivel 1 si pasa de 3
     game = new PuzzleGame(gridSize, level);
     game.start();
     document.getElementById('successMessage').style.display = 'none';
   });
 
-  // Botón Reintentar
+  // Botón "Reintentar"
   retryBtn.addEventListener('click', () => {
     const gridSize = parseInt(pieceSelect.value);
     game = new PuzzleGame(gridSize, level);
@@ -232,12 +280,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('defeatMessage').style.display = 'none';
   });
 
-  // Botones Menú
+  // Botones "Menú" (hay dos, por eso usamos querySelectorAll)
   document.querySelectorAll('.goToMenuBtn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.getElementById('successMessage').style.display = 'none';
       document.getElementById('defeatMessage').style.display = 'none';
       showMenu();
-    });
-  });
+    });
+  });
+});
+
+const input = document.querySelector('.input-coment');
+const boton = document.querySelector('.btn-comentar');
+const divInput = document.querySelector('.input-con-boton');
+input.addEventListener('click',() => {
+  boton.style.display = 'block';
+  divInput.style.height = '100px';
+
+});
+boton.addEventListener('click',() => {
+  boton.style.display = 'none';
+  divInput.style.height = '50px';
+  input.value = '';
 });
