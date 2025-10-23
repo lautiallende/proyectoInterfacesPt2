@@ -25,13 +25,13 @@ class PuzzleGame {
     this.timerInterval = null;
     this.gapActivo = true;
 
-    this.loadImage();
+    //this.loadImage();
     this.initEvents();
   }
 
-  loadImage() {
+  loadImage(index = null) {
     const totalImages = 6;
-    const randomI = Math.floor(Math.random() * totalImages) + 1;
+    const randomI = index || Math.floor(Math.random() * totalImages) + 1;
     this.image = new Image();
     this.image.src = `iconos-imagenes/blocka/blocka${randomI}.jpg`;
     this.image.onload = () => {
@@ -39,6 +39,8 @@ class PuzzleGame {
       this.drawPieces();
     };
   }
+
+
 
   createPieces() {
     this.pieces = [];
@@ -57,7 +59,8 @@ class PuzzleGame {
           row,
           col,
           rotation: [0, 90, 180, 270][Math.floor(Math.random() * 4)],
-          filter
+          filter,
+          fija: false
         });
       }
     }
@@ -107,10 +110,31 @@ class PuzzleGame {
       const piece = this.pieces.find(p => p.row === row && p.col === col);
       if (!piece) return;
 
+      if (piece.fija) return;
+
       // Animación de rotación suave
       if (e.button === 0) this.animateRotation(piece, -90);
       if (e.button === 2) this.animateRotation(piece, 90);
     });
+  }
+
+  usarAyudita() {
+    if (!this.isPlaying) return;
+
+    // Elegir una pieza al azar que no esté fija
+    const candidatas = this.pieces.filter(p => !p.fija);
+    if (candidatas.length === 0) return;
+
+    const pieza = candidatas[Math.floor(Math.random() * candidatas.length)];
+
+    pieza.rotation = 0;
+    pieza.filter = 'none';
+    pieza.fija = true;
+
+    // Sumar 5 segundos al tiempo de inicio
+    this.startTime -= 5000;
+
+    this.drawPieces();
   }
 
   // Animación de rotación de piezas
@@ -146,7 +170,7 @@ class PuzzleGame {
   } 
 
   checkWin() {
-    const allCorrect = this.pieces.every(p => p.rotation % 360 === 0);
+    const allCorrect = this.pieces.every(p => p.fija || p.rotation % 360 === 0);
     const duration = 1500; // 1,5 segundos
     const end = Date.now() + duration;
     if (!allCorrect) return;
@@ -212,11 +236,14 @@ class PuzzleGame {
     clearInterval(this.timerInterval);
     this.timerInterval = setInterval(() => {
       const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
-      const remaining = totalTime - elapsed;
-      if (remaining <= 0) {
+
+      if (elapsed >= totalTime) {
         clearInterval(this.timerInterval);
         this.isPlaying = false;
-        document.getElementById('timer').textContent = "00:00";
+
+        const totalMin = Math.floor(totalTime / 60);
+        const totalSec = String(totalTime % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = `${totalMin}:${totalSec} / ${totalMin}:${totalSec}`;
 
         // Animación de derrota
         this.canvas.classList.add('lose-effect');
@@ -225,12 +252,17 @@ class PuzzleGame {
         document.getElementById('defeatMessage').style.display = 'block';
         return;
       }
-      const minutes = String(Math.floor(remaining / 60)).padStart(2, '0');
-      const seconds = String(remaining % 60).padStart(2, '0');
-      document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+
+      const minutes = String(Math.floor(elapsed / 60)).padStart(1, '0');
+      const seconds = String(elapsed % 60).padStart(2, '0');
+      const totalMin = Math.floor(totalTime / 60);
+      const totalSec = String(totalTime % 60).padStart(2, '0');
+
+      document.getElementById('timer').textContent = `${minutes}:${seconds} / ${totalMin}:${totalSec}`;
     }, 1000);
   }
-}
+  }
+
 
 // === Inicialización de la interfaz ===
 document.addEventListener('DOMContentLoaded', () => {
@@ -240,6 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextLevelBtn = document.getElementById('nextLevelBtn');
   const retryBtn = document.getElementById('retryBtn');
   const startScreen = document.getElementById('startScreen');
+  const ayuditaBtn = document.getElementById('ayuditaBtn');
+  
+
 
   let game = null;
   let level = 1;
@@ -253,38 +288,84 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('level-info').textContent = "Nivel - | Récord: --";
   }
 
+  // Botón "Ayudita"
+  ayuditaBtn.addEventListener('click', () => {
+    if (game) {
+      game.usarAyudita();
+    }
+  });
+
   // Botón "Comenzar" (overlay inicial)
   startGameBtn.addEventListener('click', () => {
     const gridSize = parseInt(pieceSelect.value);
     level = 1;
-    game = new PuzzleGame(gridSize, level);
-    game.start();
-    startScreen.style.display = 'none';
+
+    mostrarPreview((selectedIndex) => {
+      game = new PuzzleGame(gridSize, level);
+      game.loadImage(selectedIndex); // usamos la imagen elegida
+      game.start();
+      startScreen.style.display = 'none';
+      ayuditaBtn.style.display = 'block';
+    });
   });
+
+
+
+  function mostrarPreview(callback) {
+    const previewContainer = document.getElementById('previewContainer');
+    previewContainer.innerHTML = '';
+    previewContainer.style.opacity = '1';
+
+    const totalImages = 6;
+    const selectedIndex = Math.floor(Math.random() * totalImages) + 1;
+
+    for (let i = 1; i <= totalImages; i++) {
+      const img = document.createElement('img');
+      img.src = `iconos-imagenes/blocka/blocka${i}.jpg`;
+      previewContainer.appendChild(img);
+
+      if (i === selectedIndex) {
+        setTimeout(() => {
+          img.style.transform = 'scale(1.2)';
+          img.style.borderColor = '#00FF00';
+        }, 500);
+      }
+  }
+
+  setTimeout(() => {
+    previewContainer.style.opacity = '0';
+    callback(selectedIndex); // pasamos el índice elegido
+  }, 2000);
+}
 
   // Botón "Siguiente nivel"
   nextLevelBtn.addEventListener('click', () => {
     const gridSize = parseInt(pieceSelect.value);
     level++;
-    if (level > 3) level = 1; // vuelve a nivel 1 si pasa de 3
+    if (level > 3) level = 1;
     game = new PuzzleGame(gridSize, level);
+    game.loadImage(); // ← esto faltaba
     game.start();
     document.getElementById('successMessage').style.display = 'none';
   });
+
 
   // Botón "Reintentar"
   retryBtn.addEventListener('click', () => {
     const gridSize = parseInt(pieceSelect.value);
     game = new PuzzleGame(gridSize, level);
+    game.loadImage(); // ← esto faltaba
     game.start();
     document.getElementById('defeatMessage').style.display = 'none';
   });
+
 
   // Botones "Menú" (hay dos, por eso usamos querySelectorAll)
   document.querySelectorAll('.goToMenuBtn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.getElementById('successMessage').style.display = 'none';
       document.getElementById('defeatMessage').style.display = 'none';
+      ayuditaBtn.style.display = 'none';
       showMenu();
     });
   });
