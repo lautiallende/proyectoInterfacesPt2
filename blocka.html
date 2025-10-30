@@ -215,12 +215,13 @@
             <h1>¡Bienvenido a BLOCKA!</h1>
             <p>Selecciona dificultad y haz clic en "Comenzar"</p>
 
-            <label for="pieceSelect">Piezas:</label>
-            <select id="pieceSelect">
-              <option value="2">2x2</option>
-              <option value="3">3x3</option>
-              <option value="4">4x4</option>
-            </select>
+            <div id="pieceButtons" class="piece-buttons">
+              <span>Piezas:</span>
+              <button data-size="2">2 x 2</button>
+              <button data-size="3">3 x 3</button>
+              <button data-size="4">4 x 4</button>
+            </div>
+
 
             <!-- Aca va el contenedor de thumbnails -->
             <div id="previewContainer" class="preview-container"></div>
@@ -240,6 +241,12 @@
           <div id="timer">00:00</div>
           <div id="level-info">Nivel - | Récord: --</div>
         </div>
+
+        <!-- Mensaje de récord -->
+      <div class="record-message" id="recordMessage">
+        <span>¡Nuevo récord!</span>
+      </div>
+
 
         <!-- Mensaje de victoria -->
         <div class="success-message" id="successMessage">

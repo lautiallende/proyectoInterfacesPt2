@@ -24,6 +24,7 @@ class PuzzleGame {
     this.startTime = 0;
     this.timerInterval = null;
     this.gapActivo = true;
+    this.ayuditaUsada = false;
 
     //this.loadImage();
     this.initEvents();
@@ -119,10 +120,10 @@ class PuzzleGame {
   }
 
   usarAyudita() {
-    if (!this.isPlaying) return;
+    if (!this.isPlaying || this.ayuditaUsada) return;
 
     // Elegir una pieza al azar que no esté fija
-    const candidatas = this.pieces.filter(p => !p.fija);
+    const candidatas = this.pieces.filter(p => !p.fija && p.rotation % 360 != 0);
     if (candidatas.length === 0) return;
 
     const pieza = candidatas[Math.floor(Math.random() * candidatas.length)];
@@ -133,6 +134,7 @@ class PuzzleGame {
 
     // Sumar 5 segundos al tiempo de inicio
     this.startTime -= 5000;
+    this.ayuditaUsada = true;
 
     this.drawPieces();
     this.checkWin();
@@ -181,6 +183,9 @@ class PuzzleGame {
     this.pieces.forEach(p => (p.filter = 'none'));
     this.gapActivo = false;
     this.drawPieces();
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.drawImage(this.image, 0, 0, this.canvas.width, this.canvas.height);
+
 
     // Animación de victoria
     const canvas = this.canvas;
@@ -188,18 +193,20 @@ class PuzzleGame {
     setTimeout(() => canvas.classList.remove('win-effect'), 1200);
 
     document.getElementById('successMessage').style.display = 'block';
+    const myConfetti = confetti.create(null, { resize: true, useWorker: true });
+
     (function frame() {
-    confetti({
-      particleCount: 7,
-      angle: 60,
-      spread: 70,
-      origin: { x: 0 }
-    });
-    confetti({
-      particleCount: 7,
-      angle: 120,
-      spread: 70,
-      origin: { x: 1 }
+      myConfetti({
+        particleCount: 7,
+        angle: 60,
+        spread: 70,
+        origin: { x: 0, y: 0.5 }
+      });
+      myConfetti({
+        particleCount: 7,
+        angle: 120,
+        spread: 70,
+        origin: { x: 1, y: 0.5 }
     });
 
     if (Date.now() < end) {
@@ -211,12 +218,16 @@ class PuzzleGame {
     const prevRecord = localStorage.getItem(recordKey);
     if (!prevRecord || elapsed < parseInt(prevRecord)) {
       localStorage.setItem(recordKey, elapsed);
-      alert(`¡Nuevo récord en nivel ${this.level}: ${elapsed} segundos!`);
+      const recordMsg = document.getElementById('recordMessage');
+      recordMsg.style.display = 'block';
+      recordMsg.textContent = `¡Nuevo récord en nivel ${this.level}: ${elapsed} segundos!`;
     }
   }
 
   start() {
     this.isPlaying = true;
+    this.ayuditaUsada = false;
+    ayuditaBtn.disabled = false;
     this.startTime = Date.now();
     document.getElementById('successMessage').style.display = 'none';
     document.getElementById('defeatMessage').style.display = 'none';
@@ -274,15 +285,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const retryBtn = document.getElementById('retryBtn');
   const startScreen = document.getElementById('startScreen');
   const ayuditaBtn = document.getElementById('ayuditaBtn');
-  
+  let selectedGridSize = 2;
 
 
   let game = null;
   let level = 1;
 
+  document.querySelectorAll('#pieceButtons button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedGridSize = parseInt(btn.dataset.size);
+      // Opcional: marcar el botón activo visualmente
+      document.querySelectorAll('#pieceButtons button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
   // Función para volver al menú inicial
   function showMenu() {
     startScreen.style.display = 'flex';
+    document.getElementById('recordMessage').style.display = 'none';
     const ctx = document.getElementById('gameCanvas').getContext('2d');
     ctx.clearRect(0, 0, 500, 500);
     document.getElementById('timer').textContent = "00:00";
@@ -291,14 +312,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Botón "Ayudita"
   ayuditaBtn.addEventListener('click', () => {
-    if (game) {
+    if (game && !game.ayuditaUsada) {
       game.usarAyudita();
+
+      ayuditaBtn.disabled = true;
     }
   });
 
   // Botón "Comenzar" (overlay inicial)
   startGameBtn.addEventListener('click', () => {
-    const gridSize = parseInt(pieceSelect.value);
+    const gridSize = selectedGridSize;
     level = 1;
 
     mostrarPreview((selectedIndex) => {
@@ -335,13 +358,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setTimeout(() => {
     previewContainer.style.opacity = '0';
+    previewContainer.style.display = 'none';
     callback(selectedIndex); // pasamos el índice elegido
   }, 2000);
 }
 
   // Botón "Siguiente nivel"
   nextLevelBtn.addEventListener('click', () => {
-    const gridSize = parseInt(pieceSelect.value);
+    const gridSize = selectedGridSize;
     level++;
     if (level > 3){
       level = 1;
@@ -350,6 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showMenu();
       return;
     }
+    document.getElementById('recordMessage').style.display = 'none';
     game = new PuzzleGame(gridSize, level);
     game.loadImage(); // ← esto faltaba
     game.start();
@@ -359,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Botón "Reintentar"
   retryBtn.addEventListener('click', () => {
-    const gridSize = parseInt(pieceSelect.value);
+    const gridSize = selectedGridSize;
     game = new PuzzleGame(gridSize, level);
     game.loadImage(); // ← esto faltaba
     game.start();
