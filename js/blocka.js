@@ -140,6 +140,29 @@ class PuzzleGame {
     this.checkWin();
   }
 
+volverAlMenu() {
+  clearInterval(this.timerInterval);
+  this.isPlaying = false;
+  document.getElementById('successMessage').style.display = 'none';
+  document.getElementById('defeatMessage').style.display = 'none';
+  document.getElementById('ayuditaBtn').style.display = 'none';
+  document.getElementById('menuBtn').style.display = 'none';
+  document.getElementById('restartBtn').style.display = 'none';
+  const ctx = this.canvas.getContext('2d');
+  ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  document.getElementById('timer').textContent = "00:00";
+  document.getElementById('level-info').textContent = "Nivel - | Récord: --";
+  document.getElementById('startScreen').style.display = 'flex';
+}
+
+reiniciarJuego() {
+  clearInterval(this.timerInterval);
+  this.isPlaying = false;
+  this.loadImage(); // nueva img aleatoria
+  this.start();
+}
+
+
   // Animación de rotación de piezas
   animateRotation(piece, delta) {
     if (piece.isAnimating) return;
@@ -285,6 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const retryBtn = document.getElementById('retryBtn');
   const startScreen = document.getElementById('startScreen');
   const ayuditaBtn = document.getElementById('ayuditaBtn');
+  const menuBtn = document.getElementById('menuBtn');
+  const restartBtn = document.getElementById('restartBtn');
+
   let selectedGridSize = 2;
 
 
@@ -319,6 +345,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // botones "volver menu" y "reiniciar"
+  menuBtn.addEventListener('click', () => {
+    if (game) game.volverAlMenu();
+  });
+
+  restartBtn.addEventListener('click', () => {
+    if (game) game.reiniciarJuego();
+  });
+
+
   // Botón "Comenzar" (overlay inicial)
   startGameBtn.addEventListener('click', () => {
     const gridSize = selectedGridSize;
@@ -330,6 +366,8 @@ document.addEventListener('DOMContentLoaded', () => {
       game.start();
       startScreen.style.display = 'none';
       ayuditaBtn.style.display = 'block';
+      menuBtn.style.display = 'block';
+      restartBtn.style.display = 'block';
     });
   });
 

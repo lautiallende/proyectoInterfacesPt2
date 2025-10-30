@@ -12,8 +12,7 @@
 #gameCanvas {
   display: block;
   margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  
 }
 
 /* Controles del juego */
@@ -153,6 +152,30 @@
   background-color: #888585;
   cursor: not-allowed;
 }
+
+.game-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.game-actions button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #000A90;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-actions button:hover {
+  background-color: #000657;
+}
+
 
 .record-message {
   display: none;
