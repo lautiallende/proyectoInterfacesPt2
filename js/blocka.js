@@ -1,14 +1,14 @@
 // === Configuración de filtros ===
 const FILTERS = [
-  'grayscale(100%)',
-  'brightness(30%)',
-  'invert(100%)'
+  'grayscale',
+  'brightness',
+  'invert'
 ];
 
 const FILTER_COMBOS = [
-  'grayscale(100%) brightness(30%)',
-  'invert(100%) brightness(30%)',
-  'grayscale(100%) invert(100%)'
+  'grayscale brightness',
+  'invert brightness',
+  'grayscale invert'
 ];
 
 // === Clase principal del juego ===
@@ -36,9 +36,10 @@ class PuzzleGame {
     this.image = new Image();
     this.image.src = `iconos-imagenes/blocka/blocka${randomI}.jpg`;
     this.image.onload = () => {
-      this.createPieces();
-      this.drawPieces();
-    };
+    this.createPieces();
+    this.drawPieces();
+    this.start(); 
+  };
   }
 
 
@@ -47,12 +48,10 @@ class PuzzleGame {
     this.pieces = [];
     for (let row = 0; row < this.gridSize; row++) {
       for (let col = 0; col < this.gridSize; col++) {
-        let filter = 'none';
-        if (this.level === 1) {
-          filter = 'grayscale(100%)';
-        } else if (this.level === 2) {
+        let filter = 'grayscale'; // ← valor por defecto
+        if (this.level === 2) {
           filter = FILTERS[Math.floor(Math.random() * FILTERS.length)];
-        } else {
+        } else if (this.level >= 3) {
           const all = [...FILTERS, ...FILTER_COMBOS];
           filter = all[Math.floor(Math.random() * all.length)];
         }
@@ -68,34 +67,85 @@ class PuzzleGame {
   }
 
   drawPieces() {
-    const pieceSize = this.canvas.width / this.gridSize;
-    const gap = this.gapActivo ? 4 : 0;
+  const pieceSize = this.canvas.width / this.gridSize;
+  const gap = this.gapActivo ? 4 : 0;
 
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.pieces.forEach(p => {
-      this.ctx.save();
-      this.ctx.translate(
-        p.col * pieceSize + pieceSize / 2,
-        p.row * pieceSize + pieceSize / 2
-      );
-      this.ctx.rotate((p.rotation * Math.PI) / 180);
-      this.ctx.filter = p.filter;
+  this.pieces.forEach(p => {
+    this.ctx.save();
+    this.ctx.translate(
+      p.col * pieceSize + pieceSize / 2,
+      p.row * pieceSize + pieceSize / 2
+    );
+    this.ctx.rotate((p.rotation * Math.PI) / 180);
 
-      this.ctx.drawImage(
-        this.image,
-        p.col * (this.image.width / this.gridSize),
-        p.row * (this.image.height / this.gridSize),
-        this.image.width / this.gridSize,
-        this.image.height / this.gridSize,
-        -pieceSize / 2 + gap / 2,
-        -pieceSize / 2 + gap / 2,
-        pieceSize - gap,
-        pieceSize - gap
-      );
+    const offCanvas = document.createElement("canvas");
+    offCanvas.width = pieceSize;
+    offCanvas.height = pieceSize;
+    const offCtx = offCanvas.getContext("2d");
+
+    offCtx.drawImage(
+      this.image,
+      p.col * (this.image.width / this.gridSize),
+      p.row * (this.image.height / this.gridSize),
+      this.image.width / this.gridSize,
+      this.image.height / this.gridSize,
+      0, 0, pieceSize, pieceSize
+    );
+
+    let imageData = offCtx.getImageData(0, 0, pieceSize, pieceSize);
+    imageData = this.applyFilter(imageData, p.filter);
+    offCtx.putImageData(imageData, 0, 0);
+
+    this.ctx.drawImage(
+      offCanvas,
+      -pieceSize / 2 + gap / 2,
+      -pieceSize / 2 + gap / 2,
+      pieceSize - gap,
+      pieceSize - gap
+    );
+
       this.ctx.restore();
     });
-    this.ctx.filter = 'none';
+  }
+
+
+  applyFilter(imageData, filter) {
+  const data = imageData.data;
+  const filters = filter.split(' '); // permite aplicar combos
+
+  filters.forEach(f => {
+    switch (f) {
+      case "grayscale":
+        for (let i = 0; i < data.length; i += 4) {
+          const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+          data[i] = data[i + 1] = data[i + 2] = avg;
+        }
+        break;
+
+        case "invert":
+          for (let i = 0; i < data.length; i += 4) {
+            data[i] = 255 - data[i];
+            data[i + 1] = 255 - data[i + 1];
+            data[i + 2] = 255 - data[i + 2];
+          }
+          break;
+
+        case "brightness":
+          for (let i = 0; i < data.length; i += 4) {
+            data[i] *= 0.3;
+            data[i + 1] *= 0.3;
+            data[i + 2] *= 0.3;
+          }
+          break;
+
+        default:
+          break;
+      }
+    });
+
+    return imageData;
   }
 
   initEvents() {
@@ -140,27 +190,29 @@ class PuzzleGame {
     this.checkWin();
   }
 
-volverAlMenu() {
-  clearInterval(this.timerInterval);
-  this.isPlaying = false;
-  document.getElementById('successMessage').style.display = 'none';
-  document.getElementById('defeatMessage').style.display = 'none';
-  document.getElementById('ayuditaBtn').style.display = 'none';
-  document.getElementById('menuBtn').style.display = 'none';
-  document.getElementById('restartBtn').style.display = 'none';
-  const ctx = this.canvas.getContext('2d');
-  ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  document.getElementById('timer').textContent = "00:00";
-  document.getElementById('level-info').textContent = "Nivel - | Récord: --";
-  document.getElementById('startScreen').style.display = 'flex';
-}
+  volverAlMenu() {
+    clearInterval(this.timerInterval);
+    this.isPlaying = false;
+    document.getElementById('successMessage').style.display = 'none';
+    document.getElementById('defeatMessage').style.display = 'none';
+    document.getElementById('ayuditaBtn').style.display = 'none';
+    document.getElementById('menuBtn').style.display = 'none';
+    document.getElementById('restartBtn').style.display = 'none';
+    //  document.getElementById('previewContainer').style.display = 'none';
 
-reiniciarJuego() {
-  clearInterval(this.timerInterval);
-  this.isPlaying = false;
-  this.loadImage(); // nueva img aleatoria
-  this.start();
-}
+    const ctx = this.canvas.getContext('2d');
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    document.getElementById('timer').textContent = "00:00";
+    document.getElementById('level-info').textContent = "Nivel - | Récord: --";
+    document.getElementById('startScreen').style.display = 'flex';
+  }
+
+  reiniciarJuego() {
+    clearInterval(this.timerInterval);
+    this.isPlaying = false;
+    this.loadImage(); // nueva img aleatoria
+    this.start();
+  }
 
 
   // Animación de rotación de piezas
@@ -334,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.clearRect(0, 0, 500, 500);
     document.getElementById('timer').textContent = "00:00";
     document.getElementById('level-info').textContent = "Nivel - | Récord: --";
+    startGameBtn.style.display = 'block';
   }
 
   // Botón "Ayudita"
@@ -362,8 +415,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mostrarPreview((selectedIndex) => {
       game = new PuzzleGame(gridSize, level);
-      game.loadImage(selectedIndex); // usamos la imagen elegida
-      game.start();
+      game.loadImage(selectedIndex);
+      previewContainer.style.display = 'block';
       startScreen.style.display = 'none';
       ayuditaBtn.style.display = 'block';
       menuBtn.style.display = 'block';
@@ -436,6 +489,9 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('successMessage').style.display = 'none';
       document.getElementById('defeatMessage').style.display = 'none';
       ayuditaBtn.style.display = 'none';
+      menuBtn.style.display = 'none';
+      restartBtn.style.display = 'none';
+
       showMenu();
     });
   });
