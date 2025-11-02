@@ -210,7 +210,20 @@
     </div>
 
     <div class="game-img">
-        <img src="img/imagen-juego-of.png" alt="" class="imagen-juego">
+
+      <div class="contenedor-juego-peg">
+        <canvas id="canvas-juego" width="700" height="700"></canvas>
+
+      <!-- Overlay de fin de juego -->
+      <div id="overlay">
+        <div id="mensaje-final"></div>
+        <button id="reiniciar">Volver a jugar</button>
+      </div>
+
+      <!-- Temporizador -->
+      <div id="timer">Tiempo: 0s</div>
+    </div>
+
         <div class="pie-img">
             <h2 class="tit-pie-game">Peg Solitair x Stranger Things</h2>
             <div class="icons-pie-game">
@@ -416,5 +429,6 @@
     <script src="js/registrarse.js"></script>
     <script src="js/juego.js"></script>
     <script src="js/main.js"></script>
+    <script type="module" src="js/juego/peg.js"></script>
 </body>
 </html>
