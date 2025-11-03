@@ -14,6 +14,8 @@ export class ControladorPeg {
     this.arrastrando = false;
     this.mouseX = 0;
     this.mouseY = 0;
+    this.loopArrastreID = null;
+
   }
 
   // Configura los eventos del usuario
@@ -26,11 +28,33 @@ configurarEventos() {
       this.seleccionada = posicion;
       this.arrastrando = true;
 
-      const sugerencias = this.modelo.obtenerMovimientosValidos(posicion.x, posicion.y)
-        .filter(mov => this.modelo.tablero[mov.y][mov.x] === 0); // ✅ FILTRA hints válidos
+      // 🖱️ Guardar posición del mouse
+      const rect = canvas.getBoundingClientRect();
+      this.mouseX = e.clientX - rect.left;
+      this.mouseY = e.clientY - rect.top;
 
-      this.vista.dibujarTablero(this.modelo.tablero, this.seleccionada);
+      // 🎯 Filtrar movimientos válidos
+      const sugerencias = this.modelo.obtenerMovimientosValidos(posicion.x, posicion.y)
+        .filter(mov => this.modelo.tablero[mov.y][mov.x] === 0);
+
+      // 🧼 Mostrar hints
       this.vista.animarHints(sugerencias);
+
+      // 🖼️ Dibujar inmediatamente la ficha flotante
+      this.vista.dibujarTablero(this.modelo.tablero, this.seleccionada);
+      this.vista.dibujarFicha(this.mouseX, this.mouseY, this.vista.casillaSize / 2.5, 1.2, true);
+
+      //  Iniciar bucle de arrastre visual
+      const dibujarArrastre = () => {
+        if (!this.arrastrando || !this.seleccionada || !this.vista.imagenCargada) return;
+
+        this.vista.dibujarTablero(this.modelo.tablero, this.seleccionada);
+        this.vista.dibujarFicha(this.mouseX, this.mouseY, this.vista.casillaSize / 2.5, 1.2, true);
+
+        this.loopArrastreID = requestAnimationFrame(dibujarArrastre);
+      };
+
+      dibujarArrastre(); // inicia después del primer render
     }
   });
 
@@ -38,27 +62,23 @@ configurarEventos() {
     if (!this.arrastrando || !this.seleccionada || !this.vista.imagenCargada) return;
 
     const rect = canvas.getBoundingClientRect();
-    const nuevoX = e.clientX - rect.left;
-    const nuevoY = e.clientY - rect.top;
-
-    if (Math.abs(nuevoX - this.mouseX) > 1 || Math.abs(nuevoY - this.mouseY) > 1) {
-      this.mouseX = nuevoX;
-      this.mouseY = nuevoY;
-
-      this.vista.dibujarTablero(this.modelo.tablero, this.seleccionada);
-      this.vista.dibujarFicha(this.mouseX, this.mouseY, this.vista.casillaSize / 2.5, 1.2, true);
-    }
+    this.mouseX = e.clientX - rect.left;
+    this.mouseY = e.clientY - rect.top;
   });
 
   canvas.addEventListener("mouseup", e => {
     if (!this.seleccionada) return;
     this.arrastrando = false;
 
+    if (this.loopArrastreID) {
+      cancelAnimationFrame(this.loopArrastreID);
+      this.loopArrastreID = null;
+    }
+
     const destino = this.obtenerPosicion(e);
     const movimientoValido = this.modelo.moverFicha(this.seleccionada, destino);
 
     if (movimientoValido) {
-      // ✅ NO redibujes el tablero hasta que termine la animación
       this.vista.animarMovimiento(this.seleccionada, destino, this.modelo.tablero, () => {
         this.movimientos++;
         this.vista.dibujarTablero(this.modelo.tablero);
