@@ -6,10 +6,10 @@ export class ControladorPeg {
     this.modelo = new ModeloPeg();
     this.vista = new VistaPeg(canvas, imagenes);
     this.seleccionada = null;
+    this.movimientos = 0;
     this.configurarEventos();
     this.iniciarTemporizador();
     this.vista.dibujarTablero(this.modelo.tablero);
-    this.movimientos = 0;
   }
 
   // Configura los eventos del usuario
@@ -26,44 +26,53 @@ export class ControladorPeg {
 
     canvas.addEventListener("mouseup", e => {
       const destino = this.obtenerPosicion(e);
-        if (this.modelo.moverFicha(this.seleccionada, destino)) {
-            this.movimientos++; // contar movimiento
-            this.vista.dibujarTablero(this.modelo.tablero);
+      if (this.modelo.moverFicha(this.seleccionada, destino)) {
+        this.movimientos++;
+        this.vista.dibujarTablero(this.modelo.tablero);
 
-            if (this.modelo.estaTerminado()) {
-                const tiempo = Math.floor((Date.now() - this.inicioTiempo) / 1000);
-                this.vista.mostrarFin(`¡Victoria!\nMovimientos: ${this.movimientos}\nTiempo: ${tiempo}s`);
-            }
+        if (this.modelo.estaTerminado()) {
+          const tiempo = Math.floor((Date.now() - this.inicioTiempo) / 1000);
+          const restantes = this.modelo.contarFichas();
+          const mensaje = restantes === 1
+            ? `¡Victoria!\nMovimientos: ${this.movimientos}\nTiempo: ${tiempo}s`
+            : `Sin movimientos.\nMovimientos: ${this.movimientos}\nTiempo: ${tiempo}s`;
+          this.vista.mostrarFin(mensaje);
         }
+      }
     });
 
     document.getElementById("reiniciar").addEventListener("click", () => {
-        this.modelo = new ModeloPeg();
-        this.movimientos = 0;
-        this.vista.ocultarFin();
-        this.iniciarTemporizador();
-        this.vista.dibujarTablero(this.modelo.tablero);
-        this.seleccionada = null;
+      this.iniciarJuego();
     });
   }
 
   // Convierte la posición del mouse en coordenadas del tablero
   obtenerPosicion(e) {
+    const casillaSize = this.vista.canvas.width / 7;
     const rect = this.vista.canvas.getBoundingClientRect();
     return {
-      x: Math.floor((e.clientX - rect.left) / 100),
-      y: Math.floor((e.clientY - rect.top) / 100)
+      x: Math.floor((e.clientX - rect.left) / casillaSize),
+      y: Math.floor((e.clientY - rect.top) / casillaSize)
     };
   }
 
   // Inicia el temporizador del juego
   iniciarTemporizador() {
     if (this.intervalo) clearInterval(this.intervalo);
-    this.inicioTiempo = Date.now(); // guardar inicio
+    this.inicioTiempo = Date.now();
     this.intervalo = setInterval(() => {
-        const transcurrido = Math.floor((Date.now() - this.inicioTiempo) / 1000);
-        document.getElementById("timer").textContent = `Tiempo: ${transcurrido}s`;
+      const transcurrido = Math.floor((Date.now() - this.inicioTiempo) / 1000);
+      document.getElementById("timer").textContent = `Tiempo: ${transcurrido}s`;
     }, 1000);
   }
 
+  // Reinicia el juego
+  iniciarJuego() {
+    this.modelo = new ModeloPeg();
+    this.movimientos = 0;
+    this.seleccionada = null;
+    this.vista.ocultarFin();
+    this.iniciarTemporizador();
+    this.vista.dibujarTablero(this.modelo.tablero);
+  }
 }

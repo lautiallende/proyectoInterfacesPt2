@@ -210,69 +210,79 @@
     </div>
 
     <div class="game-img">
-
-      <div class="contenedor-juego-peg">
-        <canvas id="canvas-juego" width="700" height="700"></canvas>
-
-      <!-- Overlay de fin de juego -->
-      <div id="overlay">
-        <div id="mensaje-final"></div>
-        <button id="reiniciar">Volver a jugar</button>
+      <!-- Menú de inicio -->
+      <div id="menu-inicial" class="menu-inicial">
+        <h1>Peg Solitaire x Stranger Things</h1>
+        <button id="comenzar">Comenzar</button>
       </div>
-
-      <!-- Temporizador -->
-      <div id="timer">Tiempo: 0s</div>
+  
+      <div class="contenedor-juego-peg">
+        <canvas id="canvas-juego"></canvas>
+  
+        <!-- Overlay de fin de juego -->
+        <div id="overlay">
+          <div id="mensaje-final"></div>
+          <button id="reiniciar">Volver a jugar</button>
+        </div>
+  
+        <!-- Temporizador -->
+        <div id="timer">Tiempo: 0s</div>
+  
+        <!-- Botones de control durante el juego -->
+        <div class="botones-juego">
+          <button id="reintentar">Reintentar</button>
+          <button id="volver-menu">Volver al menú</button>
+        </div>
     </div>
-
-        <div class="pie-img">
-            <h2 class="tit-pie-game">Peg Solitair x Stranger Things</h2>
-            <div class="icons-pie-game">
-                <img src="img/Icon compartir.jpg.png" alt="" class="icon-pie-game-compartir">
-                <div class="menu-compartir" id="menu-compartir">
-                    <h3>Compartir</h3>
-                    <div class="apps">
-                        <div class="icon-menu-comp">
-                            <img src="img/discord-of.JPG.png" alt="Discord">
-                            <span>DISCORD</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/telegrama.png" alt="Telegram">   
-                            <span>TELEGRAM</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/gmail.png" alt="Email">
-                            <span>GMAIL</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/whatsapp.png" alt="WhatsApp">
-                            <span>WHATSAPP</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/X.png" alt="X">
-                            <span>X</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/mensajero.png" alt="Messenger">
-                            <span>MESSENGER</span>
-                        </div>
-                        <div class="icon-menu-comp">
-                            <img src="iconos-imagenes/redes/instagram.png" alt="Instagram">  
-                            <span>INSTAGRAM</span>
-                        </div>
+    </div>
+    <div class="pie-img">
+        <h2 class="tit-pie-game">Peg Solitair x Stranger Things</h2>
+        <div class="icons-pie-game">
+            <img src="img/Icon compartir.jpg.png" alt="" class="icon-pie-game-compartir">
+            <div class="menu-compartir" id="menu-compartir">
+                <h3>Compartir</h3>
+                <div class="apps">
+                    <div class="icon-menu-comp">
+                        <img src="img/discord-of.JPG.png" alt="Discord">
+                        <span>DISCORD</span>
                     </div>
-                    <button id="cerrar">✕</button>
+                    <div class="icon-menu-comp">
+                        <img src="iconos-imagenes/redes/telegrama.png" alt="Telegram">   
+                        <span>TELEGRAM</span>
+                    </div>
+                    <div class="icon-menu-comp">
+                        <img src="iconos-imagenes/redes/gmail.png" alt="Email">
+                        <span>GMAIL</span>
+                    </div>
+                    <div class="icon-menu-comp">
+                        <img src="iconos-imagenes/redes/whatsapp.png" alt="WhatsApp">
+                        <span>WHATSAPP</span>
+                    </div>
+                    <div class="icon-menu-comp">
+                        <img src="iconos-imagenes/redes/X.png" alt="X">
+                        <span>X</span>
+                    </div>
+                    <div class="icon-menu-comp">
+                        <img src="iconos-imagenes/redes/mensajero.png" alt="Messenger">
+                        <span>MESSENGER</span>
+                    </div>
+                    <div class="icon-menu-comp">
+                        <img src="iconos-imagenes/redes/instagram.png" alt="Instagram">  
+                        <span>INSTAGRAM</span>
+                    </div>
                 </div>
-                <img src="img/icon favoritos.jpg" alt="" class="icon-pie-game-fav">
-                <img src="img/icon controles.jpg" alt="" class="icon-pie-game-controles">
-                    <div class="menu-controles" id="menu-controles">
-                        <h3>Controles</h3>
-                        <div class="ejem-contr">
-                            <img src="iconos-imagenes/como-jugar.jpg" alt="como-jugar">
-                        </div>
-                        <button id="cerrar-controles">✕</button>
-                    </div>
-                <img src="img/icon fullScreen.jpg" alt="" class="icon-pie-game-fullScreen">
+                <button id="cerrar">✕</button>
             </div>
+            <img src="img/icon favoritos.jpg" alt="" class="icon-pie-game-fav">
+            <img src="img/icon controles.jpg" alt="" class="icon-pie-game-controles">
+                <div class="menu-controles" id="menu-controles">
+                    <h3>Controles</h3>
+                    <div class="ejem-contr">
+                        <img src="iconos-imagenes/como-jugar.jpg" alt="como-jugar">
+                    </div>
+                    <button id="cerrar-controles">✕</button>
+                </div>
+            <img src="img/icon fullScreen.jpg" alt="" class="icon-pie-game-fullScreen">
         </div>
     </div>
 

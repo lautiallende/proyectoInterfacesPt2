@@ -10,6 +10,52 @@ body {
     margin: 0px 20px;
 }
 
+.menu-inicial {
+  width: 100%;
+  height: 500px;
+  background: #111;
+  color: #e11;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.menu-inicial h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.menu-inicial button {
+  padding: 12px 24px;
+  font-family: Protest Strike;
+  font-weight: 400;
+  font-size: 20px;
+  background-color: #e11;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.botones-juego {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.botones-juego button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #e11;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 #timer {
   font-size: 20px;
   margin-bottom: 10px;
@@ -17,29 +63,31 @@ body {
 }
 
 #overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 100px;
+  max-width: 300px; width: 100%;
+  max-height: 200px; height: 100%;
+  position: absolute;
   background: rgba(10, 10, 10, 0.9);
   color: #e11;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
-  z-index: 999;
+  z-index: 1;
   animation: fadeIn 0.6s ease-in-out;
+}
+
+#mensaje-final{
+    font-size: 18px;
 }
 
 #overlay button {
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: #e11;
   color: #fff;
   border: none;
-  font-size: 18px;
+  font-size: 10px;
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s;
@@ -47,6 +95,13 @@ body {
 
 #overlay button:hover {
   background-color: #a00;
+}
+
+.contenedor-juego-peg{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 @keyframes fadeIn {
@@ -76,6 +131,7 @@ body {
 
 .game-img {
     display: flex;
+    align-items: center;
     flex-direction: column;
     width: 75%;
     margin-left: 100px;
