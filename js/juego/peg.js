@@ -6,11 +6,18 @@ document.getElementById("comenzar").addEventListener("click", () => {
   document.querySelector(".contenedor-juego-peg").style.display = "block";
 
   const canvas = document.getElementById("canvas-juego");
-  canvas.width = 400; // 7 casillas × 100 px
+  canvas.width = 400;
   canvas.height = 400;
 
+  // ✅ Limpiar temporizador anterior si existe
+  if (controlador && controlador.intervalo) {
+    clearInterval(controlador.intervalo);
+  }
+
   controlador = new ControladorPeg(canvas);
+  controlador.iniciarJuego(); // ✅ iniciar correctamente
 });
+
 
 document.getElementById("reintentar").addEventListener("click", () => {
   if (controlador) controlador.iniciarJuego();

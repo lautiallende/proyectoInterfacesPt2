@@ -2,6 +2,7 @@ export class ModeloPeg {
   constructor() {
     this.tamaño = 7;
     this.tablero = this.inicializarTablero();
+    this.imagenesFichas = this.generarImagenesFichas();
   }
 
   inicializarTablero() {
@@ -44,6 +45,22 @@ export class ModeloPeg {
     }
 
     return movimientos;
+  }
+  generarImagenesFichas() {
+    const imagenes = [];
+    for (let y = 0; y < this.tamaño; y++) {
+      const fila = [];
+      for (let x = 0; x < this.tamaño; x++) {
+        if (this.tablero[y][x] === 1) {
+          const num = Math.floor(Math.random() * 4) + 1;
+          fila.push(`ficha${num}`);
+        } else {
+          fila.push(null);
+        }
+      }
+      imagenes.push(fila);
+    }
+    return imagenes;
   }
 
   // Ejecuta el movimiento si es válido
@@ -95,5 +112,6 @@ export class ModeloPeg {
   // Reinicia el tablero
   resetear() {
     this.tablero = this.inicializarTablero();
+    this.imagenesFichas = this.generarImagenesFichas(); // ✅ importante
   }
 }

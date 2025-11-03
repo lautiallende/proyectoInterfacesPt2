@@ -7,16 +7,16 @@ export class ControladorPeg {
     this.vista = new VistaPeg(canvas, imagenes);
     this.seleccionada = null;
     this.movimientos = 0;
-    this.configurarEventos();
-    this.iniciarTemporizador();
-    this.vista.dibujarTablero(this.modelo.tablero);
-    window.modelo = this.modelo;
+    this.intervalo = null; // ✅ importante
     this.arrastrando = false;
     this.mouseX = 0;
     this.mouseY = 0;
     this.loopArrastreID = null;
 
+    this.configurarEventos();
+    this.vista.dibujarTablero(this.modelo.tablero);
   }
+
 
   // Configura los eventos del usuario
 configurarEventos() {
@@ -120,19 +120,26 @@ configurarEventos() {
   iniciarTemporizador() {
     if (this.intervalo) clearInterval(this.intervalo);
     this.inicioTiempo = Date.now();
+
+    // ✅ Mostrar 0s inmediatamente
+    document.getElementById("timer").textContent = `Tiempo: 0s`;
+
     this.intervalo = setInterval(() => {
       const transcurrido = Math.floor((Date.now() - this.inicioTiempo) / 1000);
       document.getElementById("timer").textContent = `Tiempo: ${transcurrido}s`;
     }, 1000);
   }
 
+
   // Reinicia el juego
   iniciarJuego() {
-    this.modelo = new ModeloPeg();
+    this.modelo = new ModeloPeg(); 
+    window.modelo = this.modelo;
     this.movimientos = 0;
     this.seleccionada = null;
     this.vista.ocultarFin();
     this.iniciarTemporizador();
     this.vista.dibujarTablero(this.modelo.tablero);
   }
+
 }

@@ -1,44 +1,77 @@
 export class VistaPeg {
   constructor(canvas) {
-  this.canvas = canvas;
-  this.ctx = canvas.getContext("2d");
-  this.casillaSize = canvas.width / 7;
-  this.imagenFicha = document.getElementById("ficha-img");
-  this.animacionHintsID = null;
+    this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
+    this.casillaSize = canvas.width / 7;
+    this.animacionHintsID = null;
+    this.fondoCanvas = new Image();
+    this.fondoCanvas.src = "img/tablero.png";
 
+    // Imagen por defecto (no se usa para fichas aleatorias, pero puede servir para fallback)
+    this.imagenFicha = document.getElementById("ficha-img");
+    this.imagenCargada = this.imagenFicha.complete && this.imagenFicha.naturalWidth > 0;
+    this.imagenFicha.onload = () => {
+      this.imagenCargada = true;
+    };
 
-  // Verificación inmediata
-  this.imagenCargada = this.imagenFicha.complete && this.imagenFicha.naturalWidth > 0;
+    // Precargar imágenes de fichas aleatorias
+    this.imagenesPrecargadas = {};
+    for (let i = 1; i <= 4; i++) {
+      const nombre = `ficha${i}`;
+      const img = new Image();
+      img.src = `img/${nombre}.png`;
+      this.imagenesPrecargadas[nombre] = img;
+    }
+    // Fondo del canvas
+    this.fondoCanvas = new Image();
+    this.fondoCanvas.src = "img/tablero.png";
+  }
 
-  // Fallback si se carga después
-  this.imagenFicha.onload = () => {
-    this.imagenCargada = true;
-  };
-}
   // Dibuja el tablero y las fichas
   dibujarTablero(estadoTablero, fichaSeleccionada = null) {
-  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-  for (let y = 0; y < estadoTablero.length; y++) {
-    for (let x = 0; x < estadoTablero[y].length; x++) {
-      const celda = estadoTablero[y][x];
-      const posX = x * this.casillaSize;
-      const posY = y * this.casillaSize;
+    // 🖼️ Dibujar fondo del canvas
+    if (this.fondoCanvas.complete) {
+      this.ctx.drawImage(this.fondoCanvas, 0, 0, this.canvas.width, this.canvas.height);
+    } else {
+      this.fondoCanvas.onload = () => {
+        this.ctx.drawImage(this.fondoCanvas, 0, 0, this.canvas.width, this.canvas.height);
+      };
+    }
 
-      if (celda === -1) continue;
+    for (let y = 0; y < estadoTablero.length; y++) {
+      for (let x = 0; x < estadoTablero[y].length; x++) {
+        const celda = estadoTablero[y][x];
+        const posX = x * this.casillaSize;
+        const posY = y * this.casillaSize;
 
-      this.ctx.fillStyle = "#222";
-      this.ctx.fillRect(posX, posY, this.casillaSize, this.casillaSize);
+        if (celda === -1) continue;
 
-      this.ctx.strokeStyle = "#444";
-      this.ctx.strokeRect(posX, posY, this.casillaSize, this.casillaSize);
+        // ❌ Sin fondo de casilla
+        // ✅ Solo borde
+        this.ctx.strokeStyle = "#444";
+        this.ctx.strokeRect(posX, posY, this.casillaSize, this.casillaSize);
 
-      if (celda === 1 && !(fichaSeleccionada && fichaSeleccionada.x === x && fichaSeleccionada.y === y)) {
-        this.dibujarFicha(posX + this.casillaSize / 2, posY + this.casillaSize / 2, this.casillaSize / 2.5);
+        // 🎲 Dibujar ficha si está presente y no es la seleccionada
+        if (celda === 1 && !(fichaSeleccionada?.x === x && fichaSeleccionada?.y === y)) {
+          const nombre = window.modelo?.imagenesFichas?.[y]?.[x];
+          const img = this.imagenesPrecargadas[nombre];
+
+          if (img && img.complete) {
+            this.ctx.drawImage(
+              img,
+              posX + this.casillaSize / 2 - this.casillaSize / 2.5,
+              posY + this.casillaSize / 2 - this.casillaSize / 2.5,
+              this.casillaSize / 1.25,
+              this.casillaSize / 1.25
+            );
+          }
+        }
       }
     }
   }
-}
+
   // Muestra sugerencias como círculos blancos
   mostrarSugerencias(movimientos) {
     movimientos.forEach(mov => {
@@ -64,16 +97,21 @@ export class VistaPeg {
     document.getElementById("overlay").style.display = "none";
   }
 
-dibujarFicha(x, y, radio, scale = 1, shadow = false) {
-  const size = radio * 2 * scale;
-  this.ctx.save();
-  if (shadow) {
-    this.ctx.shadowColor = "rgba(0,0,0,0.5)";
-    this.ctx.shadowBlur = 15;
+  dibujarFicha(x, y, radio, scale = 1, shadow = false, nombre = null) {
+    const size = radio * 2 * scale;
+    this.ctx.save();
+    if (shadow) {
+      this.ctx.shadowColor = "rgba(0,0,0,0.5)";
+      this.ctx.shadowBlur = 15;
+    }
+
+    const img = nombre ? this.imagenesPrecargadas[nombre] : this.imagenFicha;
+    if (img && img.complete) {
+      this.ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
+    }
+
+    this.ctx.restore();
   }
-  this.ctx.drawImage(this.imagenFicha, x - size / 2, y - size / 2, size, size);
-  this.ctx.restore();
-}
 
 
 animarMovimiento(origen, destino, tablero, callback, rebote = false) {
