@@ -2,8 +2,8 @@ import { ModeloPeg } from "./model.js";
 import { VistaPeg } from "./view.js";
 
 export class ControladorPeg {
-  constructor(canvas, imagenes) {
-    this.modelo = new ModeloPeg();
+  constructor(canvas, imagenes, nombreFicha = "ficha1") {
+    this.modelo = new ModeloPeg(nombreFicha);
     this.vista = new VistaPeg(canvas, imagenes);
     this.seleccionada = null;
     this.movimientos = 0;
@@ -132,8 +132,8 @@ configurarEventos() {
 
 
   // Reinicia el juego
-  iniciarJuego() {
-    this.modelo = new ModeloPeg(); 
+  iniciarJuego(nombreFicha = "ficha1") {
+    this.modelo = new ModeloPeg(nombreFicha); 
     window.modelo = this.modelo;
     this.movimientos = 0;
     this.seleccionada = null;

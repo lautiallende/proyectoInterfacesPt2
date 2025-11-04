@@ -50,8 +50,8 @@ export class VistaPeg {
 
         // ❌ Sin fondo de casilla
         // ✅ Solo borde
-        this.ctx.strokeStyle = "#444";
-        this.ctx.strokeRect(posX, posY, this.casillaSize, this.casillaSize);
+        //this.ctx.strokeStyle = none;
+        //this.ctx.strokeRect(posX, posY, this.casillaSize, this.casillaSize);
 
         // 🎲 Dibujar ficha si está presente y no es la seleccionada
         if (celda === 1 && !(fichaSeleccionada?.x === x && fichaSeleccionada?.y === y)) {

@@ -56,6 +56,33 @@ body {
   cursor: pointer;
 }
 
+.grupo-fichas {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.boton-ficha {
+  background: none;
+  border: 2px solid transparent;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: border 0.3s;
+}
+
+.boton-ficha img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.boton-ficha.seleccionada {
+  border-color: #e11;
+}
+
+
 #timer {
   font-size: 20px;
   margin-bottom: 10px;
@@ -63,10 +90,14 @@ body {
 }
 
 #overlay {
-  top: 100px;
-  max-width: 300px; width: 100%;
-  max-height: 200px; height: 100%;
-  position: absolute;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-80%, -50%);
+  max-width: 300px;
+  max-height: 200px;
+  width: 100%;
+  height: 100%;
   background: rgba(10, 10, 10, 0.9);
   color: #e11;
   display: none;
@@ -76,6 +107,7 @@ body {
   z-index: 1;
   animation: fadeIn 0.6s ease-in-out;
 }
+
 
 #mensaje-final{
     font-size: 18px;

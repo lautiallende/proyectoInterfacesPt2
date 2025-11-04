@@ -1,8 +1,8 @@
 export class ModeloPeg {
-  constructor() {
+  constructor(nombreFicha = "ficha1") {
     this.tamaño = 7;
     this.tablero = this.inicializarTablero();
-    this.imagenesFichas = this.generarImagenesFichas();
+    this.imagenesFichas = this.generarImagenesFichas(nombreFicha);
   }
 
   inicializarTablero() {
@@ -46,17 +46,12 @@ export class ModeloPeg {
 
     return movimientos;
   }
-  generarImagenesFichas() {
+  generarImagenesFichas(nombreFicha) {
     const imagenes = [];
     for (let y = 0; y < this.tamaño; y++) {
       const fila = [];
       for (let x = 0; x < this.tamaño; x++) {
-        if (this.tablero[y][x] === 1) {
-          const num = Math.floor(Math.random() * 4) + 1;
-          fila.push(`ficha${num}`);
-        } else {
-          fila.push(null);
-        }
+        fila.push(this.tablero[y][x] === 1 ? nombreFicha : null);
       }
       imagenes.push(fila);
     }
