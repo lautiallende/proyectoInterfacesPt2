@@ -67,9 +67,16 @@ export class ModeloPeg {
       const medioX = Math.floor((origen.x + destino.x) / 2);
       const medioY = Math.floor((origen.y + destino.y) / 2);
 
+      // Actualizar lógica del tablero
       this.tablero[destino.y][destino.x] = 1;
       this.tablero[origen.y][origen.x] = 0;
       this.tablero[medioY][medioX] = 0;
+
+      // ✅ Actualizar imágenes asociadas
+      this.imagenesFichas[destino.y][destino.x] = this.imagenesFichas[origen.y][origen.x];
+      this.imagenesFichas[origen.y][origen.x] = null;
+      this.imagenesFichas[medioY][medioX] = null;
+
       return true;
     }
 

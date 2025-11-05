@@ -41,8 +41,3 @@ document.getElementById("reiniciar").addEventListener("click", () => {
   document.getElementById("overlay").style.display = "none";
   if (controlador) controlador.iniciarJuego(fichaElegida);
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("canvas-juego");
-  new ControladorPeg(canvas);
-});

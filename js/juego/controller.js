@@ -4,7 +4,7 @@ import { VistaPeg } from "./view.js";
 export class ControladorPeg {
   constructor(canvas, imagenes, nombreFicha = "ficha1") {
     this.modelo = new ModeloPeg(nombreFicha);
-    this.vista = new VistaPeg(canvas, imagenes);
+    this.vista = new VistaPeg(canvas, nombreFicha);
     this.seleccionada = null;
     this.movimientos = 0;
     this.intervalo = null; // ✅ importante
@@ -14,7 +14,9 @@ export class ControladorPeg {
     this.loopArrastreID = null;
 
     this.configurarEventos();
-    this.vista.dibujarTablero(this.modelo.tablero);
+    this.vista.esperarImagenes(() => {
+      this.vista.dibujarTablero(this.modelo.tablero);
+    });
   }
 
 
@@ -132,14 +134,19 @@ configurarEventos() {
 
 
   // Reinicia el juego
-  iniciarJuego(nombreFicha = "ficha1") {
-    this.modelo = new ModeloPeg(nombreFicha); 
+  iniciarJuego(nombreFicha) {
+    this.nombreFicha = nombreFicha;
+    this.modelo = new ModeloPeg(this.nombreFicha);
+    this.vista.nombreFicha = this.nombreFicha;
     window.modelo = this.modelo;
     this.movimientos = 0;
     this.seleccionada = null;
     this.vista.ocultarFin();
     this.iniciarTemporizador();
-    this.vista.dibujarTablero(this.modelo.tablero);
+    this.vista.esperarImagenes(() => {
+      this.vista.dibujarTablero(this.modelo.tablero);
+    });
+
   }
 
 }

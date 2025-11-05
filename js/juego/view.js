@@ -1,5 +1,6 @@
 export class VistaPeg {
-  constructor(canvas) {
+  constructor(canvas, nombreFicha = "ficha1") {
+    this.nombreFicha = nombreFicha;
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.casillaSize = canvas.width / 7;
@@ -48,11 +49,37 @@ export class VistaPeg {
 
         if (celda === -1) continue;
 
-        // ❌ Sin fondo de casilla
-        // ✅ Solo borde
-        //this.ctx.strokeStyle = none;
-        //this.ctx.strokeRect(posX, posY, this.casillaSize, this.casillaSize);
+        // 💡 Dibujar borde si esta casilla es sugerida
+        // 💡 Dibujar hint visual si esta casilla es sugerida
+        if (window.controlador?.sugerenciasActivas) {
+          const esSugerida = window.controlador.sugerenciasActivas.some(m => m.x === x && m.y === y);
+          if (esSugerida) {
+            this.ctx.save();
 
+            // Fondo sutil
+            this.ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+            this.ctx.fillRect(posX, posY, this.casillaSize, this.casillaSize);
+
+            // Borde visible
+            this.ctx.strokeStyle = "#00ffff";
+            this.ctx.lineWidth = 2;
+            this.ctx.strokeRect(posX + 1, posY + 1, this.casillaSize - 2, this.casillaSize - 2);
+
+            // Circulito blanco
+            this.ctx.fillStyle = "#ffffff";
+            this.ctx.beginPath();
+            this.ctx.arc(
+              posX + this.casillaSize / 2,
+              posY + this.casillaSize / 2,
+              this.casillaSize / 7,
+              0,
+              Math.PI * 2
+            );
+            this.ctx.fill();
+
+            this.ctx.restore();
+          }
+        }
         // 🎲 Dibujar ficha si está presente y no es la seleccionada
         if (celda === 1 && !(fichaSeleccionada?.x === x && fichaSeleccionada?.y === y)) {
           const nombre = window.modelo?.imagenesFichas?.[y]?.[x];
@@ -72,17 +99,28 @@ export class VistaPeg {
     }
   }
 
+  
   // Muestra sugerencias como círculos blancos
   mostrarSugerencias(movimientos) {
     movimientos.forEach(mov => {
-      const posX = mov.x * this.casillaSize + this.casillaSize / 2;
-      const posY = mov.y * this.casillaSize + this.casillaSize / 2;
-      this.ctx.fillStyle = "#fff";
-      this.ctx.beginPath();
-      this.ctx.arc(posX, posY, this.casillaSize / 7, 0, Math.PI * 2);
-      this.ctx.fill();
+      const posX = mov.x * this.casillaSize;
+      const posY = mov.y * this.casillaSize;
+
+      this.ctx.save();
+
+      // 🔲 Fondo semitransparente para destacar la casilla
+      this.ctx.fillStyle = "rgba(255, 255, 255, 0.15)";
+      this.ctx.fillRect(posX, posY, this.casillaSize, this.casillaSize);
+
+      // 🔳 Borde visible con alto contraste
+      this.ctx.strokeStyle = "#00ffff"; // color cian brillante
+      this.ctx.lineWidth = 3;
+      this.ctx.strokeRect(posX + 1.5, posY + 1.5, this.casillaSize - 3, this.casillaSize - 3);
+
+      this.ctx.restore();
     });
   }
+
 
   // Muestra mensaje de fin de juego
   mostrarFin(mensaje) {
@@ -105,7 +143,9 @@ export class VistaPeg {
       this.ctx.shadowBlur = 15;
     }
 
-    const img = nombre ? this.imagenesPrecargadas[nombre] : this.imagenFicha;
+    const img = nombre
+      ? this.imagenesPrecargadas[nombre]
+      : this.imagenesPrecargadas[this.nombreFicha] || this.imagenFicha;
     if (img && img.complete) {
       this.ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
     }
@@ -113,6 +153,28 @@ export class VistaPeg {
     this.ctx.restore();
   }
 
+  esperarImagenes(callback) {
+    const todas = [
+      this.fondoCanvas,
+      ...Object.values(this.imagenesPrecargadas)
+    ];
+
+    const pendientes = todas.filter(img => !img.complete || img.naturalWidth === 0);
+
+    if (pendientes.length === 0) {
+      callback();
+    } else {
+      let cargadas = 0;
+      pendientes.forEach(img => {
+        img.onload = () => {
+          cargadas++;
+          if (cargadas === pendientes.length) {
+            callback();
+          }
+        };
+      });
+    }
+  }
 
 animarMovimiento(origen, destino, tablero, callback, rebote = false) {
   const startX = origen.x * this.casillaSize + this.casillaSize / 2;

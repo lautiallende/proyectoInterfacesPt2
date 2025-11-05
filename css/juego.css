@@ -20,6 +20,15 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  gap: 10px;
+}
+
+.boton-ficha.seleccionada {
+  background-color: rgba(0, 0, 0, 0.2); /* 🔦 oscurece el fondo del botón */
+  border: 2px solid #fff;               /* opcional: borde blanco para destacar */
+  border-radius: 8px;                   /* opcional: suaviza el borde */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);               /* opcional: agranda un poco el botón */
 }
 
 .menu-inicial h1 {
