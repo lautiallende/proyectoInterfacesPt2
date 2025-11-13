@@ -177,8 +177,7 @@ export class VistaPeg {
   }
 
 animarMovimiento(origen, destino, tablero, callback, rebote = false) {
-  const startX = origen.x * this.casillaSize + this.casillaSize / 2;
-  const startY = origen.y * this.casillaSize + this.casillaSize / 2;
+  // Coordenadas del destino (la ficha ya está ahí en el modelo)
   const endX = destino.x * this.casillaSize + this.casillaSize / 2;
   const endY = destino.y * this.casillaSize + this.casillaSize / 2;
 
@@ -196,11 +195,13 @@ animarMovimiento(origen, destino, tablero, callback, rebote = false) {
   const animar = (tiempo) => {
     const t = Math.min((tiempo - inicio) / duracion, 1);
     const progreso = rebote ? easeOutBounce(t) : t;
-    const x = startX + (endX - startX) * progreso;
-    const y = startY + (endY - startY) * progreso;
 
-    this.dibujarTablero(tablero, origen); // oculta ficha original
-    this.dibujarFicha(x, y, this.casillaSize / 2.5, 1.2, true);
+    // 🔧 Dibujar tablero completo (ya actualizado con ficha en destino)
+    this.dibujarTablero(tablero);
+
+    // 🔧 Animar efecto visual en destino (ej: rebote/escala)
+    const scale = 1 + 0.2 * (1 - progreso); // efecto de caída/rebote
+    this.dibujarFicha(endX, endY, this.casillaSize / 2.5, scale, true);
 
     if (t < 1) {
       requestAnimationFrame(animar);
@@ -210,7 +211,7 @@ animarMovimiento(origen, destino, tablero, callback, rebote = false) {
   };
 
   requestAnimationFrame(animar);
-}
+} 
 animarHints(movimientos) {
   if (this.animacionHintsID) cancelAnimationFrame(this.animacionHintsID);
 

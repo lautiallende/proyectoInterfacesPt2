@@ -106,12 +106,12 @@ export class ControladorPeg {
               : `Sin movimientos.\nMovimientos: ${this.movimientos}\nTiempo: ${tiempo}s`;
             this.vista.mostrarFin(mensaje);
           }
-        });
+        },false,true);
       } else {
         // ❌ Movimiento inválido → animación de rebote
         this.vista.animarMovimiento(destino, this.seleccionada, this.modelo.tablero, () => {
           this.vista.dibujarTablero(this.modelo.tablero);
-        }, true);
+        }, true, false);
       }
 
       this.seleccionada = null;
