@@ -181,13 +181,13 @@ body {
 }
 
 .imagen-juego {
-    height: 490px;
-    border-bottom: 0px;
-    transition: transform 0.3s ease;
+  height: 490px;
+  border-bottom: 0px;
+  transition: transform 0.3s ease;
 }
 
 .imagen-juego:hover{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .pie-img {
@@ -201,11 +201,11 @@ body {
 }
 
 .tit-pie-game {
-    color: #ff0000;
-    margin-left: 10px;
-    font-weight: bold;
-    font-size: 30px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #ff0000;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .icons-pie-game {
@@ -395,9 +395,9 @@ body {
 }
 
 .comentario-insert {
-    display: flex;
-    flex-direction:row;
-    height: 50px;           
+  display: flex;
+  flex-direction:row;
+  height: 50px;      
 }
 
 .input-coment {
