@@ -1,0 +1,158 @@
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#canvas-flappy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border: 2px solid crimson;
+}
+
+#cartel-instrucciones {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.95);
+  color: white;
+  border: 2px solid black;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+}
+
+#puntaje {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 34px;
+  color: white;
+  font-family: Protest Strike;
+  font-weight: 400;
+  z-index: 50;
+}
+
+#cartel-perdiste {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  display: none;
+  z-index: 100;
+  font-size: 30px;
+  font-family: Protest Strike;
+  font-weight: 1000;
+}
+
+#cartel-perdiste button, #btn-cerrar-instrucciones {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-family: Protest Strike;
+  font-weight: 400;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+#texto-record {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.fondo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: cover;
+  top: 0;
+  left: 0;
+}
+
+.capa1, .capa2, .capa3, .capa4 {
+  animation: none;
+}
+
+#menu-inicio {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 110;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-family: Protest Strike;
+  font-weight: 1000;
+  color: white;
+  text-align: center;
+}
+
+#boton-iniciar, #btn-instrucciones {
+  margin-top: 10px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-family: Protest Strike;
+  font-weight: 400;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+#boton-iniciar:hover,#btn #cartel-perdiste button:hover {
+  background-color: darkred;
+  transform: scale(1.05);
+}
+
+/* Animaciones parallax */
+@keyframes scroll1 { 0% {background-position-x: 0px;} 100% {background-position-x: -1024px;} }
+@keyframes scroll2 { 0% {background-position-x: 0px;} 100% {background-position-x: -2048px;} }
+@keyframes scroll3 { 0% {background-position-x: 0px;} 100% {background-position-x: -3072px;} }
+@keyframes scroll4 { 0% {background-position-x: 0px;} 100% {background-position-x: -4096px;} }
+
+.animar-parallax .capa1 { animation: scroll1 120s linear infinite; }
+.animar-parallax .capa2 { animation: scroll2 90s linear infinite; }
+.animar-parallax .capa3 { animation: scroll3 60s linear infinite; }
+.animar-parallax .capa4 { animation: scroll4 30s linear infinite; }
+
+.capa1 { background-image: url('/img/capa1.png'); z-index: 1; }
+.capa2 { background-image: url('/img/capa2.png'); z-index: 2; }
+.capa3 { background-image: url('/img/capa3.png'); z-index: 3; }
+.capa4 { background-image: url('/img/capa4.png'); z-index: 4; }
+
+.img-desc-ejem img{
+  width: 250px;
+}

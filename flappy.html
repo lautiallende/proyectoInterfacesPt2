@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="css/juego.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/flappy.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Strike&display=swap" rel="stylesheet">
+</head>
+<body>
+     <header>
+        <nav class="navBar">
+            <!-- IZQUIERDA -->
+             <div class="headerIzq">
+                 <button class="menuHamburguesa">
+                     <img src="iconos-imagenes/menu.png" alt="menuHamburguesa" class="imgMenu">
+                     <div class="dropdown-menu">
+                        <img src="iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                        <div class="menu-item">
+                          <a href="index.html">
+                            <img src="iconos-imagenes/iconos-hamburguesa/casa.png" alt="home">
+                          </a>
+                          <p>Inicio</p>
+                        </div>
+                        <a href="#populares">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/fuego.png" alt="populares">
+                            <p>Populares</p>
+                          </div>
+                        </a>  
+                        <a href="#top-puntados">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/trofeo.png" alt="">
+                            <p>Top Puntuados</p>
+                          </div>
+                        </a>  
+                        <a href="#nuevos">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/new.png" alt="">
+                            <p>Nuevos</p>
+                          </div>
+                        </a>  
+                        <a href="#arcade">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/juego-retro.png" alt="arcade">
+                            <p>Arcade</p>
+                          </div>
+                        </a>  
+                        <a href="#aventura">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/arboles.png" alt="arbol">
+                            <p>Aventura</p>
+                          </div>
+                        </a>  
+                        <a href="#accion">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/espadas.png" alt="espadas">
+                            <p>Acción</p>
+                          </div>
+                        </a>  
+                        <a href="#deportes">
+                          <div class="menu-item">
+                              <img src="iconos-imagenes/iconos-hamburguesa/pelota.png" alt="deportes">
+                              <p>Deportes</p>
+                            </div>
+                          </a>  
+                        <a href="#puzzle">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/rompecabezas.png" alt="pieza">
+                            <p>Puzzle</p>
+                          </div>
+                        </a>  
+                        <a href="#estrategia">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/pieza-de-ajedrez.png" alt="caballo">
+                            <p>Estrategia</p>
+                          </div>
+                        </a>  
+                        <a href="#creativos">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/pintar.png" alt="tabla-pintura">
+                            <p>Creativos</p>
+                          </div>
+                        </a>  
+                        <a href="#habilidad">
+                          <div class="menu-item">
+                            <img src="iconos-imagenes/iconos-hamburguesa/diana.png" alt="diana">
+                            <p>Habilidad</p>
+                          </div>
+                        </a>  
+                     </div>
+                 </button>
+                 <a href="index.html">
+                     <img src="iconos-imagenes/logo/Stranger_Play-removebg-preview.png" alt="Logo" class="logo">
+                 </a>
+             </div>
+
+            <!-- CENTRO -->
+            <div class="headerCentro">
+                <input type="text" placeholder="Buscar">
+                <button type="submit">
+                    <img src="iconos-imagenes/buscar.png" alt="Buscar">
+                </button>
+            </div>
+
+            <!-- DERECHA -->
+            <div class="headerDer">
+                <div class="notificaciones">
+                  <img src="iconos-imagenes/notificacion.png" alt="notificaciones" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <div class="header-menues">
+                          <span>NOTIFICACIONES</span>
+                          <img src="iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      </div>
+                      <div class="notificacion">
+                          <p>No tienes notificaciones nuevas.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="favoritos">
+                  <img src="iconos-imagenes/corazon.png" alt="favoritos" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <div class="header-menues">
+                          <p>FAVORITOS</p>
+                          <img src="iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      </div>
+                      <div class="juegos-favoritos">
+                          <p>No tienes favoritos aún.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="carrito">
+                  <img src="iconos-imagenes/carrito-de-compras.png" alt="carrito" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <div class="header-menues">
+                          <span>MIS COMPRAS</span>
+                          <img src="iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-item">
+                          <div class="carrito-item-textos">
+                              <p>Clash Royale</p>
+                              <p class="precio">$9,67 USD</p>
+                          </div>
+                          <img src="iconos-imagenes/quitar-del-carrito.png" alt="quitar-producto" class="quitar-producto">
+                      </div>
+                      <div class="carrito-total">
+                          <div class="carrito-total-textos">
+                              <p>Total a pagar:</p>
+                              <p>90,27 USD</p>
+                          </div>
+                          <button type="button" class="pagar" alt="pagar">Pagar</button>
+                      </div>
+                  </div>
+                </div>
+                <div class="perfil">
+                  <img src="iconos-imagenes/usuario.png" alt="perfil" class="imgHeader">
+                  <div class="dropdown-menu">
+                      <img src="iconos-imagenes/letra-x.png" alt="cerrar" class="cerrar-menu">
+                      <img src="iconos-imagenes/usuario.png" alt="perfil">
+                      <p class="nombre-usuario">¡Hola, user91218!</p>
+             
+             <button type="button" class="perfil-opcion">Mi perfil</button>
+                    <button type="button" class="perfil-opcion">Editar perfil</button>
+                      <button type="button" class="perfil-opcion">Configuración</button>
+                      <button type="button" class="perfil-opcion">Soporte</button>
+                      <button type="button" class="perfil-opcion">Cerrar sesión</button>
+                  </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="desc-ruta-game">
+        <a href="index.html"><button class="ruta-game">Home ></button></a><a href="index.html#categorias"> <button class="ruta-game">Categorias ></button></a> <a href="index.html#puzzle"><button class="ruta-game">Puzzle ></button></a> <button class="ruta-game">Flappy Bird x Stranger Things</button>
+    </div>
+
+    <div class="game-img">
+      <div class="game-container">
+      <div id="parallax">
+        <div class="fondo capa1"></div>
+        <div class="fondo capa2"></div>
+        <div class="fondo capa3"></div>
+        <div class="fondo capa4"></div>
+      </div>
+
+      <!-- canvas -->
+      <canvas id="canvas-flappy"></canvas>
+
+      <div id="menu-inicio">
+        <h2>Flappy Bird x Stranger Things</h2>
+        <button id="boton-iniciar">Comenzar</button>
+        <button id="btn-instrucciones">Instrucciones</button>
+      </div>
+      <div id="cartel-instrucciones">
+        <h2>Instrucciones</h2>
+        <p>- El pajarito debe esquivar las <span style="color: green;">tuberías</span>.</p>
+        <p>- Cada <span style="color: yellow;">moneda</span> suma <strong>+5 puntos</strong>.</p>
+        <p>- Si tocás un <span style="color: red">demonio</span>, perdés inmediatamente.</p>
+        <button id="btn-cerrar-instrucciones">Cerrar</button>
+      </div>
+
+      <div id="puntaje">Puntaje: 0</div>
+
+      <div id="cartel-perdiste">
+        <h2>¡Perdiste!</h2>
+        <p id="texto-record">Tu récord: 0</p>
+        <button id="btn-reintentar">Jugar de nuevo</button>
+        <button id="btn-menu">Volver al menú</button>
+      </div>
+    </div>
+      <div class="pie-img">
+          <h2 class="tit-pie-game">Flappy Bird x Stranger Things</h2>
+          <div class="icons-pie-game">
+              <img src="img/Icon compartir.jpg.png" alt="" class="icon-pie-game-compartir">
+              <div class="menu-compartir" id="menu-compartir">
+                  <h3>Compartir</h3>
+                  <div class="apps"> 
+                      <div class="icon-menu-comp">
+                          <img src="img/discord-of.JPG.png" alt="Discord">
+                          <span>DISCORD</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/telegrama.png" alt="Telegram">   
+                          <span>TELEGRAM</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/gmail.png" alt="Email">
+                          <span>GMAIL</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/whatsapp.png" alt="WhatsApp">
+                          <span>WHATSAPP</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/X.png" alt="X">
+                          <span>X</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/mensajero.png" alt="Messenger">
+                          <span>MESSENGER</span>
+                      </div>
+                      <div class="icon-menu-comp">
+                          <img src="iconos-imagenes/redes/instagram.png" alt="Instagram">  
+                          <span>INSTAGRAM</span>
+                      </div>
+                  </div>
+                  <button id="cerrar">✕</button>
+              </div>
+              <img src="img/icon favoritos.jpg" alt="" class="icon-pie-game-fav">
+              <img src="img/icon controles.jpg" alt="" class="icon-pie-game-controles">
+                  <div class="menu-controles" id="menu-controles">
+                      <h3>Controles</h3>
+                      <div class="ejem-contr">
+                          <img src="iconos-imagenes/como-jugar.jpg" alt="como-jugar">
+                      </div>
+                      <button id="cerrar-controles">✕</button>
+                  </div>
+              <img src="img/icon fullScreen.jpg" alt="" class="icon-pie-game-fullScreen">
+          </div>
+      </div>
+    </div>
+
+    <div class="descripcion-game">
+        <div class="info-desc">
+            <h1 class="tit-desc">DESCRIPCIÓN:</h1>
+            <p class="p1-desc">Flappy Bird es un juego de habilidad y reflejos donde controlás a un pajarito que debe volar a través de un escenario en movimiento constante. El desafío no es solo esquivar las clásicas tuberías, sino también recolectar monedas para sumar puntos y evitar a los demonios que aparecen en pantalla. Cada partida es única: mientras más avances, más obstáculos y enemigos tendrás que enfrentar, poniendo a prueba tu precisión y rapidez. </p>
+            <h2 class="tit-como-jugar">Como se juega:</h2>
+            <ul class="list-como-jugar">
+              <li>Tocá la pantalla o presioná la barra espaciadora para que el pajarito dé un salto y se mantenga en vuelo.</li>
+              <li>Esquivá las tuberías que aparecen de manera continua. Cada tubería superada suma puntos.</li>
+              <li>Recolectá monedas para aumentar tu puntaje más rápido.</li>
+              <li>Tené cuidado con los demonios: si chocás contra uno, la partida termina inmediatamente.</li>
+              <li>El objetivo es lograr la mayor cantidad de puntos posible antes de chocar contra un obstáculo o enemigo.</li>
+            </ul>
+            <h2 class="tit-como-jugar">Desarrollador por el fandom:</h2>
+            <a href="https://strangerthings.fandom.com/es/wiki/Stranger_Things" target="_blank" class="link-desc">
+                Creadores del juego
+            </a>
+        </div>
+
+        <div class="img-desc-ejem">
+          <div class="box-img-desc-2">
+            <img src="img/img-flappy.png" alt="" class="img-desc">
+          </div>
+          
+          <div class="box-img-desc-2">
+            <img src="img/img-flappy2.png" alt="" class="img-desc-2">
+          </div>
+          
+          <div class="box-img-desc-3">
+            <img src="img/video-flappy.png" alt="" class="img-desc-3">
+          </div>
+        </div>
+ 
+    </div>
+
+    <div class="comentarios-container">
+
+      <div class="comentario-insert">
+          <img src="iconos-imagenes/juego/usuario-blanco.png" alt="" class="icon-user-coment">
+          <div class="input-con-boton">
+            <input type="text" class="input-coment" placeholder="Déjanos aquí que te pareció el videojuego...">
+            <button class="btn-comentar">Comentar</button>
+          </div>
+      </div>
+
+        <div class="comentarios-public">
+            <img src="iconos-imagenes/juego/usuario-negro.png" alt="" class="icon-coment-piblic">
+            <div class="comentario-box">
+                <div class="titl-coments">
+                    <h2 class="user-coment">Argentina_777</h2>
+                    <img src="img/icon tres-puntitos.jpg" alt="" class="options-coment">
+                </div>
+
+                <p class="comentario-publicado">El juego es increible!</p>
+
+                <div class="info-coments">
+                    <p class="cant-likes">598</p>
+                    <img src="iconos-imagenes/icon like.jpg" alt="like" class="like-coment">
+                    <img src="iconos-imagenes/icon dislike.jpg" alt="dislike" class="like-coment">
+                    <p class="fecha-coment">9 / 9 / 2025</p>
+                </div>
+
+                <div class="resp-coment">
+                    <img src="img/icon flechaAbajo.jpg" alt="" class="scroll-resp-coment">
+                    <p class="mas-respuestas">1 respuestas</p>
+                </div>
+            </div>
+        </div>      
+
+        <div class="resp-coment-plus" id="resp-coment-plus">
+            <img src="iconos-imagenes/juego/usuario-negro.png" alt="" class="icon-coment-piblic">
+            <div class="comentario-box">
+                <div class="titl-coments">
+                    <h2 class="user-coment">MESSI_BDO10</h2>
+                    <img src="img/icon tres-puntitos.jpg" alt="" class="options-coment">
+                </div>
+
+                <p class="comentario-publicado">Concuerdo con Argentina_777, este juego es lo mas!</p>
+
+                <div class="info-coments">
+                    <p class="cant-likes">1</p>
+                    <img src="iconos-imagenes/icon like.jpg" alt="like" class="like-coment">
+                    <img src="iconos-imagenes/icon dislike.jpg" alt="dislike" class="like-coment">
+                    <p class="fecha-coment">10 / 09 / 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="comentarios-public">
+            <img src="iconos-imagenes/juego/usuario-negro.png" alt="" class="icon-coment-piblic">
+            <div class="comentario-box">
+                <div class="titl-coments">
+                    <h2 class="user-coment">Belen_Gamer07</h2>
+                    <img src="img/icon tres-puntitos.jpg" alt="" class="options-coment">
+                </div>
+
+                <p class="comentario-publicado">Pesimo juego.</p>
+
+                <div class="info-coments">
+                    <p class="cant-likes">150.000</p>
+                    <img src="iconos-imagenes/icon like.jpg" alt="like" class="like-coment">
+                    <img src="iconos-imagenes/icon dislike.jpg" alt="dislike" class="like-coment">
+                    <p class="fecha-coment">15 / 12 / 2024</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+      <div class="footer-high">
+      <div class="footer-section">
+        <h3>Sobre la página</h3>
+        <p>Sobre nosotros</p>
+        <p>Equipo/Contacto</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Ayuda</h3>
+        <p>Preguntas frecuentes (FAQ)</p>
+        <p>Soporte / Ayuda</p>
+        <p>Términos y condiciones</p>
+        <p>Política de privacidad</p>
+      </div>
+      <div class="footer-section">
+        <h3>Navegación Rápida</h3>
+        <a href="index.html"><p>Inicio</p></a>
+        <p>Promociones / Ofertas</p>
+        <p>Juegos populares</p>
+        <p>Juegos nuevos</p>
+        <p>Favoritos</p>
+      </div>
+      <div class="footer-section">
+        <h3>Redes Sociales</h3>
+        <div class="social-icons">
+          <img src="iconos-imagenes/redes/logoFacebook.png" alt="Facebook" class="icon-footer">
+          <img src="iconos-imagenes/redes/instagram.png" alt="Instagram" class="icon-footer">
+          <img src="iconos-imagenes/redes/X.png" alt="Twitter" class="icon-footer">
+          <img src="iconos-imagenes/redes/youtube.png" alt="YouTube" class="icon-footer">
+        </div>
+      </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="index.html"><img src="iconos-imagenes/logo/Stranger_Play-removebg-preview.png" alt="Stranger Play Logo" class="footer-logo"></a>
+          <span class="footer-copy">
+             &copy; 2025 Todos los derechos reservados - Stranger Play
+          </span>
+      </div>
+    </footer>
+
+    <script src="js/juego.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/flappy/modelFlappy.js"></script>
+    <script src="js/flappy/moneda.js"></script>
+    <script src="js/flappy/demonio.js"></script>
+    <script src="js/flappy/tuberia.js"></script>
+    <script src="js/flappy/viewFlappy.js"></script>
+    <script src="js/flappy/controllerFlappy.js"></script>
+    <script src="js/flappy/flappy.js"></script>
+</body>
+</html>
