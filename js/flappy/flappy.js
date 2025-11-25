@@ -12,6 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const botonInicio = document.getElementById("boton-iniciar");
   botonInicio.addEventListener("click", () => {
     document.getElementById("menu-inicio").style.display = "none";
+    document.getElementById("cartel-instrucciones").style.display = "none";
     document.getElementById("puntaje").style.display = "block";
     document.getElementById("parallax").classList.add("animar-parallax");
     controlador.iniciar();

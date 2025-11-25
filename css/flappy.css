@@ -150,10 +150,10 @@
 .animar-parallax .capa3 { animation: scroll3 60s linear infinite; }
 .animar-parallax .capa4 { animation: scroll4 30s linear infinite; }
 
-.capa1 { background-image: url('img/capa1.png'); z-index: 1; }
-.capa2 { background-image: url('img/capa2.png'); z-index: 2; }
-.capa3 { background-image: url('img/capa3.png'); z-index: 3; }
-.capa4 { background-image: url('img/capa4.png'); z-index: 4; }
+.capa1 { background-image: url('../img/capa1.png'); z-index: 1; }
+.capa2 { background-image: url('../img/capa2.png'); z-index: 2; }
+.capa3 { background-image: url('../img/capa3.png'); z-index: 3; }
+.capa4 { background-image: url('../img/capa4.png'); z-index: 4; }
 
 .img-desc-ejem img{
   width: 250px;
