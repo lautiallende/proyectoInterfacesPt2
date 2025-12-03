@@ -6,16 +6,31 @@ class Tuberia {
     this.alturaAbajo = alturaAbajo;
     this.canvasHeight = canvasHeight;
     this.contado = false;
+
+    // ✅ Cargar imágenes separadas
+    this.spriteArriba = new Image();
+    this.spriteArriba.src = "img/img-tubo-arriba.png";
+
+    this.spriteAbajo = new Image();
+    this.spriteAbajo.src = "img/img-tubo-abajo.png";
   }
 
   mover() {
-    this.x -= 2;
+    this.x -= 4; 
   }
 
   dibujar(ctx) {
-    ctx.fillStyle = "green";
-    ctx.fillRect(this.x, 0, this.width, this.alturaArriba);
-    ctx.fillRect(this.x, this.canvasHeight - this.alturaAbajo, this.width, this.alturaAbajo);
+    // Dibujar tubería de arriba
+    ctx.drawImage(
+      this.spriteArriba,
+      this.x, 0, this.width, this.alturaArriba
+    );
+
+    // Dibujar tubería de abajo
+    ctx.drawImage(
+      this.spriteAbajo,
+      this.x, this.canvasHeight - this.alturaAbajo, this.width, this.alturaAbajo
+    );
   }
 
   colisiona(hitbox) {

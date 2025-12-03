@@ -16,7 +16,10 @@ class ControladorFlappy {
     this.modelo.reiniciar();
 
     document.addEventListener("keydown", e => {
-      if (e.code === "Space") this.modelo.saltar();
+      if (e.code === "Space"){
+        e.preventDefault();
+        this.modelo.saltar();
+      } 
     });
 
     document.addEventListener("click", () => {

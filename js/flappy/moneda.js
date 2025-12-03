@@ -13,7 +13,7 @@ class Moneda {
   }
 
   mover() {
-    this.x -= 2;
+    this.x -= 4;
   }
 
   animar() {

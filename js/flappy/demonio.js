@@ -11,7 +11,7 @@ class Demonio {
     this.anchoFrame = 302;  // ancho real del frame
     this.altoFrame = 251;   // alto real del frame
     this.separacion = 1;    // separación entre frames
-    this.velocidad = 3;     // velocidad de movimiento
+    this.velocidad = 5;     // velocidad de movimiento
   }
 
   mover() {

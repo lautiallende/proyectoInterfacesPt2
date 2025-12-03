@@ -1,7 +1,7 @@
 class ModeloFlappy {
   constructor(canvas) {
     this.canvas = canvas;
-    this.pajaro = { x: 50, y: canvas.height / 2, velocidad: 0 };
+    this.pajaro = { x: 200, y: canvas.height / 2, velocidad: 0 };
     this.gravedad = 0.5;
     this.impulso = -8;
   }
